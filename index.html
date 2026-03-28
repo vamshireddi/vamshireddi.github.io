@@ -108,11 +108,26 @@ section:nth-child(even){background:var(--bg-mid)}
 
 .certs-section{margin-top:56px}
 .certs-section h3{text-align:center;font-size:1.2rem;margin-bottom:8px}
-.certs-section .section-label{display:block;text-align:center;margin-bottom:24px}
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
-.cert-badge{padding:10px 16px;border-radius:var(--radius-sm);font-size:.78rem;font-weight:500;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:var(--gray);text-align:center;transition:all .2s}
-.cert-badge:hover{border-color:rgba(212,168,67,.2);color:var(--white)}
+.certs-section .section-label{display:block;text-align:center;margin-bottom:12px}
+.cert-category{margin-bottom:28px}
+.cert-category-title{font-size:.82rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:8px}
+.cert-category-title .cat-icon{width:20px;height:20px;flex-shrink:0}
+.cert-category-title.cat-arch{color:#00a1e0}
+.cert-category-title.cat-dev{color:#8b5cf6}
+.cert-category-title.cat-consult{color:#10b981}
+.cert-category-title.cat-admin{color:#f59e0b}
+.cert-category-title.cat-spec{color:#ec4899}
+.cert-category-title.cat-industry{color:var(--gold)}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
+.cert-badge{padding:10px 14px;border-radius:var(--radius-sm);font-size:.78rem;font-weight:500;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:var(--gray);transition:all .2s;display:flex;align-items:center;gap:10px}
+.cert-badge:hover{border-color:rgba(212,168,67,.2);color:var(--white);transform:translateX(2px)}
 .cert-badge.highlight{background:rgba(212,168,67,.08);border-color:rgba(212,168,67,.2);color:var(--gold);font-weight:600}
+.cert-badge .cert-icon{width:24px;height:24px;flex-shrink:0;opacity:.7}
+.cert-badge:hover .cert-icon{opacity:1}
+.trailhead-verify{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:12px 28px;border-radius:8px;background:linear-gradient(135deg,#00a1e0,#0070d2);color:#fff;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .3s;border:none;cursor:pointer}
+.trailhead-verify:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,112,210,.3)}
+.trailhead-verify svg{width:20px;height:20px}
+.cert-verify-wrap{text-align:center;margin-top:24px}
 
 /* ── PROJECTS ── */
 .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
@@ -181,6 +196,7 @@ section:nth-child(even){background:var(--bg-mid)}
   .tl-card{padding:20px}
   section{padding:64px 0}
   .achieve-grid{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){
   .cta-row{flex-direction:column;align-items:center}
@@ -453,35 +469,91 @@ section:nth-child(even){background:var(--bg-mid)}
     <div class="certs-section reveal">
       <h3>Certifications</h3>
       <span class="section-label">28 Salesforce Certifications + Industry Credentials</span>
-      <div class="cert-grid">
-        <div class="cert-badge highlight">Salesforce Certified Systems Architect</div>
-        <div class="cert-badge highlight">Salesforce Certified Application Architect</div>
-        <div class="cert-badge highlight">Salesforce Agentforce Specialist</div>
-        <div class="cert-badge highlight">Salesforce CPQ Specialist</div>
-        <div class="cert-badge highlight">SAFe Product Owner / Product Manager</div>
-        <div class="cert-badge highlight">AWS Solution Architect Associate</div>
-        <div class="cert-badge">Salesforce Certified Data Architecture &amp; Management Designer</div>
-        <div class="cert-badge">Salesforce Certified Sharing &amp; Visibility Designer</div>
-        <div class="cert-badge">Salesforce Certified Integration Architecture Designer</div>
-        <div class="cert-badge">Salesforce Certified Identity &amp; Access Management Designer</div>
-        <div class="cert-badge">Salesforce Certified Development Lifecycle &amp; Deployment Designer</div>
-        <div class="cert-badge">Salesforce Certified Platform Developer I</div>
-        <div class="cert-badge">Salesforce Certified Platform Developer II</div>
-        <div class="cert-badge">Salesforce Certified Platform App Builder</div>
-        <div class="cert-badge">Salesforce Certified Administrator</div>
-        <div class="cert-badge">Salesforce Certified Advanced Administrator</div>
-        <div class="cert-badge">Salesforce Certified Sales Cloud Consultant</div>
-        <div class="cert-badge">Salesforce Certified Service Cloud Consultant</div>
-        <div class="cert-badge">Salesforce Certified Field Service Consultant</div>
-        <div class="cert-badge">Salesforce Certified Experience Cloud Consultant</div>
-        <div class="cert-badge">Salesforce Certified OmniStudio Consultant</div>
-        <div class="cert-badge">Salesforce Certified Data Cloud Consultant</div>
-        <div class="cert-badge">Salesforce Certified Business Analyst</div>
-        <div class="cert-badge">Salesforce Certified Strategy Designer</div>
-        <div class="cert-badge highlight">SAFe Scrum Master</div>
-        <div class="cert-badge highlight">SAFe Agilist</div>
-        <div class="cert-badge highlight">Scrum Alliance Certified Product Owner</div>
-        <div class="cert-badge highlight">Copado Administrator</div>
+
+      <!-- Architect Track -->
+      <div class="cert-category">
+        <div class="cert-category-title cat-arch">
+          <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
+          Architect Track
+        </div>
+        <div class="cert-grid">
+          <div class="cert-badge highlight"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#00a1e0" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Systems Architect</div>
+          <div class="cert-badge highlight"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#00a1e0" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Application Architect</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#00a1e0" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Data Architecture &amp; Management Designer</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#00a1e0" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Sharing &amp; Visibility Designer</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#00a1e0" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Integration Architecture Designer</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#00a1e0" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Identity &amp; Access Management Designer</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#00a1e0" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Development Lifecycle &amp; Deployment Designer</div>
+        </div>
+      </div>
+
+      <!-- Consultant Track -->
+      <div class="cert-category">
+        <div class="cert-category-title cat-consult">
+          <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Consultant Track
+        </div>
+        <div class="cert-grid">
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Sales Cloud Consultant</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Service Cloud Consultant</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Field Service Consultant</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Experience Cloud Consultant</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>OmniStudio Consultant</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Data Cloud Consultant</div>
+        </div>
+      </div>
+
+      <!-- Developer & Admin Track -->
+      <div class="cert-category">
+        <div class="cert-category-title cat-dev">
+          <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Developer &amp; Admin
+        </div>
+        <div class="cert-grid">
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Platform Developer I</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Platform Developer II</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Platform App Builder</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Administrator</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Advanced Administrator</div>
+        </div>
+      </div>
+
+      <!-- Specialist Track -->
+      <div class="cert-category">
+        <div class="cert-category-title cat-spec">
+          <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Specialist &amp; Analyst
+        </div>
+        <div class="cert-grid">
+          <div class="cert-badge highlight"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Agentforce Specialist</div>
+          <div class="cert-badge highlight"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>CPQ Specialist</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Business Analyst</div>
+          <div class="cert-badge"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Strategy Designer</div>
+        </div>
+      </div>
+
+      <!-- Industry Certifications -->
+      <div class="cert-category">
+        <div class="cert-category-title cat-industry">
+          <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Industry &amp; Agile Certifications
+        </div>
+        <div class="cert-grid">
+          <div class="cert-badge highlight"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.99 5.99 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>AWS Solution Architect Associate</div>
+          <div class="cert-badge highlight"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-5"/></svg>SAFe Product Owner / Product Manager</div>
+          <div class="cert-badge highlight"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-5"/></svg>SAFe Scrum Master</div>
+          <div class="cert-badge highlight"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-5"/></svg>SAFe Agilist</div>
+          <div class="cert-badge highlight"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-5"/></svg>Scrum Alliance Certified Product Owner</div>
+          <div class="cert-badge highlight"><svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-5"/></svg>Copado Administrator</div>
+        </div>
+      </div>
+
+      <!-- Trailhead Verification -->
+      <div class="cert-verify-wrap">
+        <a href="https://trailhead.salesforce.com/en/credentials/certification-detail-print/?searchString=kwDodrIyTxl/QbpYpeRzpJC6NauuB3XaL4Ig2XrBFFcKEGkanh02N/56DAmbNcHJ" target="_blank" rel="noopener" class="trailhead-verify">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Verify All Certifications on Trailhead
+        </a>
       </div>
     </div>
   </div>
