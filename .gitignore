@@ -1,0 +1,16 @@
+# Claude Code - NEVER commit these
+.claude/
+*.memory
+*.plan
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.*
