@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{title}} — Vamshi Bandaru</title>
+<meta name="description" content="{{description}}">
+<meta name="author" content="{{author}}">
+<link rel="canonical" href="{{url}}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{url}}">
+<meta property="og:image" content="{{og_image}}">
+<meta property="og:site_name" content="Vamshi Bandaru">
+<meta property="article:published_time" content="{{date_iso}}">
+<meta property="article:author" content="{{author_linkedin}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+<meta name="twitter:image" content="{{og_image}}">
+<link rel="alternate" type="application/rss+xml" title="Vamshi Bandaru — Articles" href="/articles/feed.xml">
+<link rel="stylesheet" href="/articles/articles.css">
+<script type="application/ld+json">{{jsonld}}</script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">VKR Bandaru</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/articles/" class="active">Articles</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/Vamshi_Reddy_Bandaru_Resume_2026.pdf">Resume</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header>
+    <div class="eyebrow"><a href="/articles/">Articles</a></div>
+    <h1>{{title}}</h1>
+    <p class="subtitle">{{subtitle}}</p>
+    <div class="byline">
+      <img src="/photo.jpg" alt="">
+      <div>
+        <div class="who"><a href="/">{{author}}</a></div>
+        <div class="when">
+          <span>Published <time datetime="{{date_iso}}">{{date_h}}</time></span>
+          {{updated}}
+          <span>{{minutes}} min read · {{words}} words</span>
+        </div>
+      </div>
+    </div>
+    <div class="tags">{{tags}}</div>
+    {{cover}}
+    {{toc}}
+  </header>
+
+  <article class="prose">
+{{body}}
+  </article>
+
+  <section class="share">
+    <span>Share this article</span>
+    <a href="{{share_linkedin}}" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="{{share_x}}" target="_blank" rel="noopener">X</a>
+    <button type="button" id="copyLink" data-url="{{url}}">Copy link</button>
+  </section>
+
+  {{related}}
+  {{prevnext}}
+
+  <aside class="author">
+    <img src="/photo.jpg" alt="{{author}}">
+    <div><strong>{{author}}</strong><p>{{author_bio}} <a href="/">More about Vamshi →</a> · <a href="{{author_linkedin}}" rel="noopener" target="_blank">LinkedIn</a></p></div>
+  </aside>
+</main>
+
+<footer class="footer">Built by Vamshi &mdash; 2026 &middot; <a href="/articles/">All articles</a> &middot; <a href="/articles/feed.xml">RSS</a></footer>
+<script>
+document.getElementById('copyLink')?.addEventListener('click',function(){
+  var b=this,u=b.dataset.url||location.href;
+  (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy link'},1800)}).catch(function(){prompt('Copy this link',u)});
+});
+</script>
+</body>
+</html>

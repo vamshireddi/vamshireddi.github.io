@@ -8,9 +8,16 @@ Professional portfolio site at `vamshireddi.com` — single-page landing for job
 index.html       ← Portfolio page (single self-contained HTML)
 og-image.jpg     ← OG social sharing banner (1200x630)
 photo.jpg        ← Professional headshot (400x400)
-resume.pdf       ← Downloadable resume
+Vamshi_Reddy_Bandaru_Resume_2026.pdf ← Downloadable resume (resume.pdf kept as legacy alias)
 CNAME            ← Custom domain (vamshireddi.com)
+articles/        ← Article system: src/*.md → build.py → <slug>/index.html, index.html, feed.xml (see articles/README.md)
+.github/workflows/articles.yml ← builds articles on push when articles/src changes
 ```
+
+## Articles
+- Write Markdown in `articles/src/YYYY-MM-DD-slug.md` with front matter; run `python3 articles/build.py` (pip3 install markdown) or let the GitHub Action build
+- Home page Writing section is generated between `<!-- ARTICLES:START/END -->` markers — never hand-edit
+- Generated files (articles/<slug>/, articles/index.html, feed.xml) are committed
 
 ## Conventions
 - Single self-contained HTML file with all CSS/JS inline

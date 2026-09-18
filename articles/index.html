@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Articles — Vamshi Bandaru</title>
+<meta name="description" content="Articles by Vamshi Krishna Reddy Bandaru on Salesforce architecture, applied AI and machine learning, and building software.">
+<link rel="canonical" href="https://vamshireddi.com/articles/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Articles — Vamshi Bandaru">
+<meta property="og:description" content="Articles by Vamshi Krishna Reddy Bandaru on Salesforce architecture, applied AI and machine learning, and building software.">
+<meta property="og:url" content="https://vamshireddi.com/articles/">
+<meta property="og:image" content="https://vamshireddi.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="Vamshi Bandaru — Articles" href="/articles/feed.xml">
+<link rel="stylesheet" href="/articles/articles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Blog", "name": "Vamshi Bandaru \u2014 Articles", "url": "https://vamshireddi.com/articles/", "author": {"@type": "Person", "name": "Vamshi Krishna Reddy Bandaru"}}</script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">VKR Bandaru</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/articles/" class="active">Articles</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/Vamshi_Reddy_Bandaru_Resume_2026.pdf">Resume</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header>
+    <div class="eyebrow">Writing</div>
+    <h1>Articles</h1>
+    <p class="subtitle">Salesforce architecture, applied AI, and building things that last — 1 articles and counting.</p>
+
+    <div class="controls">
+      <div class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="search" id="q" placeholder="Search titles, summaries, tags, and full text…" autocomplete="off" aria-label="Search articles">
+        <button class="clear" id="clearQ" aria-label="Clear search" hidden>&times;</button>
+      </div>
+      <select class="sort" id="sort" aria-label="Sort order">
+        <option value="new">Newest first</option>
+        <option value="old">Oldest first</option>
+        <option value="title">Title A–Z</option>
+        <option value="long">Longest read</option>
+      </select>
+    </div>
+    <div class="chips" id="chips"><button class="chip" data-tag="AI">AI <span>1</span></button><button class="chip" data-tag="Career">Career <span>1</span></button><button class="chip" data-tag="Learning">Learning <span>1</span></button><button class="chip" data-tag="Machine Learning">Machine Learning <span>1</span></button></div>
+    <div class="status" id="status"></div>
+  </header>
+
+  <div id="groups">
+<section class="year" data-year="2026"><h2 class="year-title">2026</h2><div class="cards"><article class="card" data-tags="AI|Machine Learning|Learning|Career" data-date="2026-09-18T08:00:00" data-slug="nine-months-as-a-student-again">
+  <a class="card-cover" href="/articles/nine-months-as-a-student-again/"><img src="/articles/images/pgp-aiml-certificate.jpg" alt="University of Texas at Austin certificate — Post Graduate Program in Artificial Intelligence and Machine Learning: Business Applications, McCombs School of Business, September 2026" loading="lazy"></a>
+  <div class="card-body">
+    <div class="card-meta"><time datetime="2026-09-18T08:00:00-05:00">September 18, 2026</time> · 4 min read</div>
+    <h2><a href="/articles/nine-months-as-a-student-again/">Nine Months as a Student Again</a></h2>
+    <p>I completed the UT Austin McCombs Post Graduate Program in AI &amp; Machine Learning on top of a full consulting load — nine months, nine projects, A+ in six of seven core modules. Here is what it actually cost, what changed, and what I&#x27;d tell my past self.</p>
+    <div class="tags"><a class="tag" href="/articles/?tag=AI">AI</a><a class="tag" href="/articles/?tag=Machine Learning">Machine Learning</a><a class="tag" href="/articles/?tag=Learning">Learning</a><a class="tag" href="/articles/?tag=Career">Career</a></div>
+  </div>
+</article></div></section>
+  </div>
+  <div class="empty" id="empty" hidden>No articles match. <a href="/articles/" id="reset">Clear filters</a></div>
+</main>
+
+<footer class="footer">Built by Vamshi &mdash; 2026 &middot; <a href="/articles/feed.xml">RSS</a></footer>
+<script>
+(function(){
+  var q=document.getElementById('q'),clear=document.getElementById('clearQ'),sort=document.getElementById('sort'),
+      chips=[].slice.call(document.querySelectorAll('.chip')),status=document.getElementById('status'),
+      empty=document.getElementById('empty'),groups=document.getElementById('groups'),
+      cards=[].slice.call(document.querySelectorAll('.card')),index=null,activeTag='';
+  var params=new URLSearchParams(location.search);
+  if(params.get('tag')) activeTag=params.get('tag');
+  if(params.get('q')) q.value=params.get('q');
+  if(params.get('sort')) sort.value=params.get('sort');
+
+  fetch('/articles/index.json').then(function(r){return r.json()}).then(function(d){index={};d.forEach(function(a){index[a.slug]=a});apply();}).catch(function(){apply();});
+
+  function norm(s){return (s||'').toLowerCase()}
+  function matches(card,terms){
+    if(!terms.length) return true;
+    var a=index&&index[card.dataset.slug];
+    var hay=norm(card.textContent)+' '+norm(card.dataset.tags)+(a?' '+norm(a.text):'');
+    return terms.every(function(t){return hay.indexOf(t)>-1});
+  }
+  function highlight(card,terms){
+    card.querySelectorAll('mark').forEach(function(m){m.replaceWith(m.textContent)});
+    if(!terms.length) return;
+    ['h2 a','p'].forEach(function(sel){var el=card.querySelector(sel);if(!el)return;var t=el.textContent;
+      var re=new RegExp('('+terms.map(function(x){return x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')','ig');
+      el.innerHTML=t.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]}).replace(re,'<mark>$1</mark>');});
+  }
+  function apply(){
+    var terms=norm(q.value).split(/\s+/).filter(Boolean),shown=0;
+    clear.hidden=!q.value;
+    chips.forEach(function(c){c.classList.toggle('on',c.dataset.tag===activeTag)});
+    cards.forEach(function(c){
+      var ok=matches(c,terms)&&(!activeTag||c.dataset.tags.split('|').indexOf(activeTag)>-1);
+      c.hidden=!ok; if(ok){shown++;highlight(c,terms);}
+    });
+    // sort within each year group, and order the groups
+    var mode=sort.value;
+    var years=[].slice.call(document.querySelectorAll('.year'));
+    years.forEach(function(y){
+      var cs=[].slice.call(y.querySelectorAll('.card')),wrap=y.querySelector('.cards');
+      cs.sort(function(a,b){
+        if(mode==='title') return a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent);
+        if(mode==='long') return minutes(b)-minutes(a);
+        return mode==='old'?a.dataset.date.localeCompare(b.dataset.date):b.dataset.date.localeCompare(a.dataset.date);
+      });
+      cs.forEach(function(c){wrap.appendChild(c)});
+      y.hidden=!cs.some(function(c){return !c.hidden});
+    });
+    years.sort(function(a,b){return mode==='old'?a.dataset.year-b.dataset.year:b.dataset.year-a.dataset.year});
+    years.forEach(function(y){groups.appendChild(y)});
+    if(mode==='title'||mode==='long') years.forEach(function(y){y.querySelector('.year-title').hidden=true}); else years.forEach(function(y){y.querySelector('.year-title').hidden=false});
+    empty.hidden=shown>0;
+    var bits=[];
+    if(q.value) bits.push('matching “'+q.value+'”');
+    if(activeTag) bits.push('tagged <a href="#" id="untag">'+activeTag+' ×</a>');
+    status.innerHTML=shown+' of '+cards.length+' articles'+(bits.length?' '+bits.join(', '):'');
+    var u=new URLSearchParams(); if(q.value)u.set('q',q.value); if(activeTag)u.set('tag',activeTag); if(mode!=='new')u.set('sort',mode);
+    history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:''));
+    var un=document.getElementById('untag'); if(un) un.onclick=function(e){e.preventDefault();activeTag='';apply();};
+  }
+  function minutes(c){return parseInt((c.querySelector('.card-meta').textContent.match(/(\d+) min/)||[0,0])[1],10)}
+  q.addEventListener('input',apply);
+  clear.addEventListener('click',function(){q.value='';apply();q.focus();});
+  sort.addEventListener('change',apply);
+  chips.forEach(function(c){c.addEventListener('click',function(){activeTag=activeTag===c.dataset.tag?'':c.dataset.tag;apply();})});
+  document.getElementById('reset').addEventListener('click',function(e){e.preventDefault();q.value='';activeTag='';sort.value='new';apply();});
+  document.addEventListener('keydown',function(e){if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();}});
+})();
+</script>
+</body>
+</html>

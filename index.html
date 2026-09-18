@@ -44,6 +44,18 @@ img{max-width:100%;display:block}
 .nav-links a:hover,.nav-links a.active{color:var(--white)}
 .nav-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer}
 
+/* ── WRITING ── */
+.writing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-top:8px}
+.writing-card{display:block;background:var(--bg-card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:24px;color:var(--white);transition:border-color .2s,transform .2s}
+.writing-card:hover{border-color:rgba(212,168,67,.5);transform:translateY(-3px);color:var(--white)}
+.writing-date{font-size:.8rem;color:var(--gray-dim);margin-bottom:8px}
+.writing-card h3{font-size:1.15rem;font-weight:700;line-height:1.3;margin-bottom:8px}
+.writing-card p{color:var(--gray);font-size:.93rem;line-height:1.55}
+.writing-card p{margin-bottom:10px}
+.writing-tags{display:flex;gap:6px;flex-wrap:wrap}
+.writing-tags span{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);border:1px solid rgba(74,158,255,.25);padding:2px 8px;border-radius:999px}
+.writing-more{margin-top:26px}
+
 /* ── HERO ── */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:linear-gradient(160deg,var(--bg-dark) 0%,#0d0d28 40%,#12122e 100%);overflow:hidden}
 .hero::before{content:"";position:absolute;top:-40%;right:-20%;width:800px;height:800px;background:radial-gradient(circle,rgba(74,158,255,.06) 0%,transparent 70%);pointer-events:none}
@@ -254,6 +266,7 @@ section:nth-child(even){background:var(--bg-mid)}
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
+      <li><a href="#writing">Writing</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -1018,6 +1031,26 @@ section:nth-child(even){background:var(--bg-mid)}
 </section>
 
 <!-- CONTACT -->
+<section id="writing">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Writing</span>
+      <h2 class="section-title">Articles</h2>
+    </div>
+    <div class="writing-grid reveal">
+      <!-- ARTICLES:START -->
+      <a class="writing-card" href="/articles/nine-months-as-a-student-again/">
+        <div class="writing-date"><time datetime="2026-09-18T08:00:00-05:00">September 18, 2026</time> · 4 min read</div>
+        <h3>Nine Months as a Student Again</h3>
+        <p>I completed the UT Austin McCombs Post Graduate Program in AI &amp; Machine Learning on top of a full consulting load — nine months, nine projects, A+ in six of seven core mo…</p>
+        <div class="writing-tags"><span>AI</span><span>Machine Learning</span><span>Learning</span></div>
+      </a>
+      <!-- ARTICLES:END -->
+    </div>
+    <div class="writing-more reveal"><a class="btn btn-outline" href="/articles/">All articles &rarr;</a></div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="container">
     <div class="contact-wrap">
