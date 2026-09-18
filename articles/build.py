@@ -104,6 +104,43 @@ def tag_html(tags, link=True):
         return "".join(f'<a class="tag" href="/articles/?tag={html.escape(t)}">{html.escape(t)}</a>' for t in tags)
     return "".join(f'<span class="tag">{html.escape(t)}</span>' for t in tags)
 
+
+# ----------------------------------------------------------------- glossary tooltips
+def extract_glossary(body_html):
+    """Find a table under a heading containing 'glossary' and return {term: (full, what)}."""
+    m = re.search(r'<h2[^>]*>[^<]*[Gg]lossary[^<]*</h2>.*?<table>(.*?)</table>', body_html, re.S)
+    if not m:
+        return {}
+    gl = {}
+    for row in re.findall(r'<tr>(.*?)</tr>', m.group(1), re.S):
+        cells = [strip_tags(c) for c in re.findall(r'<td[^>]*>(.*?)</td>', row, re.S)]
+        if len(cells) >= 3 and cells[0]:
+            full = cells[1] if cells[1] not in ("", "—", "-") else ""
+            gl[cells[0]] = (full, cells[2])
+    return gl
+
+def add_tooltips(body_html, gl):
+    """Wrap glossary terms in <abbr title=...> inside plain text, skipping links, headings, code and tables."""
+    if not gl:
+        return body_html
+    terms = sorted(gl, key=len, reverse=True)
+    pat = re.compile(r'(?<![\w-])(' + '|'.join(re.escape(t) for t in terms) + r')(?![\w-])')
+    out, depth = [], {"a": 0, "h1": 0, "h2": 0, "h3": 0, "code": 0, "pre": 0, "table": 0, "abbr": 0}
+    for piece in re.split(r'(<[^>]+>)', body_html):
+        if piece.startswith('<'):
+            tag = re.match(r'</?([a-zA-Z0-9]+)', piece)
+            if tag and tag.group(1).lower() in depth:
+                depth[tag.group(1).lower()] += -1 if piece.startswith('</') else 1
+            out.append(piece); continue
+        if any(v > 0 for v in depth.values()) or not piece.strip():
+            out.append(piece); continue
+        def rep(m):
+            full, what = gl[m.group(1)]
+            tip = (full + " — " if full else "") + what
+            return f'<abbr class="gl" data-tip="{html.escape(tip, quote=True)}" tabindex="0">{m.group(1)}</abbr>'
+        out.append(pat.sub(rep, piece))
+    return "".join(out)
+
 # ----------------------------------------------------------------- load
 def load_articles():
     arts = []
@@ -121,6 +158,7 @@ def load_articles():
         slug = meta.get("slug") or (fm.group(2) if fm else slugify(meta["title"]))
         MD.reset()
         body_html = MD.convert(body)
+        body_html = add_tooltips(body_html, extract_glossary(body_html))
         toc = MD.toc if meta.get("toc") and body.count("\n## ") >= 3 else ""
         tags = meta.get("tags", [])
         if isinstance(tags, str):

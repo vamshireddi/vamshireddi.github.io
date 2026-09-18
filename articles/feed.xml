@@ -4,7 +4,7 @@
   <link>https://vamshireddi.com/articles/</link>
   <atom:link href="https://vamshireddi.com/articles/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Salesforce architecture, applied AI, and building software.</description>
-  <lastBuildDate>Fri, 18 Sep 2026 19:45:00 -0500</lastBuildDate>
+  <lastBuildDate>Fri, 18 Sep 2026 20:08:00 -0500</lastBuildDate>
   <item>
     <title>Nine Months as a Student Again</title>
     <link>https://vamshireddi.com/articles/nine-months-as-a-student-again/</link>
@@ -12,5 +12,13 @@
     <pubDate>Fri, 18 Sep 2026 08:00:00 -0500</pubDate>
     <author>Vamshi Krishna Reddy Bandaru</author><category>AI</category><category>Machine Learning</category><category>Learning</category><category>Career</category>
     <description>I completed the UT Austin McCombs Post Graduate Program in AI &amp; Machine Learning on top of a full consulting load — nine months, nine projects, A+ in six of seven core modules. Here is what it actually cost, what changed, and what I&#x27;d tell my past self.</description>
+  </item>
+  <item>
+    <title>The Customer Is the Architecture</title>
+    <link>https://vamshireddi.com/articles/b2c-solution-architect/</link>
+    <guid isPermaLink="true">https://vamshireddi.com/articles/b2c-solution-architect/</guid>
+    <pubDate>Sat, 12 Sep 2026 09:00:00 -0500</pubDate>
+    <author>Vamshi Krishna Reddy Bandaru</author><category>Salesforce</category><category>Architecture</category><category>Agentforce</category><category>Data 360</category><category>Commerce</category><category>AI</category>
+    <description>I earned the Salesforce Certified B2C Solution Architect credential this week. The exam is less about any one cloud than about the decisions between them — Data 360 as the spine, headless commerce, Agentforce as a new interface, and integration as the thing that makes or breaks all of it. Here is how I think about that architecture, and what Dreamforce 2026 changed.</description>
   </item>
 </channel></rss>

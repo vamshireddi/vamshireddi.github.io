@@ -128,3 +128,13 @@ h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.5vw,3rem);lin
 .year[hidden],.card[hidden]{display:none}
 .card mark{background:rgba(212,168,67,.35);color:var(--white);border-radius:3px;padding:0 2px}
 .empty{margin-top:40px;color:var(--gray);text-align:center;padding:40px;border:1px dashed rgba(255,255,255,.12);border-radius:var(--radius)}
+
+/* full-width figures */
+.prose p:has(> img:only-child){max-width:none}
+.prose p > img:only-child{width:100%}
+.prose h2,.prose h3{scroll-margin-top:84px}
+
+/* glossary tooltips */
+abbr.gl{text-decoration:none;border-bottom:1px dotted rgba(212,168,67,.7);cursor:help;position:relative}
+abbr.gl:hover,abbr.gl:focus{border-bottom-color:var(--gold);outline:none}
+abbr.gl:hover::after,abbr.gl.open::after,abbr.gl:focus-visible::after{content:attr(data-tip);position:absolute;left:0;top:calc(100% + 8px);z-index:20;width:min(360px,80vw);background:#1b1a2e;color:var(--white);border:1px solid rgba(212,168,67,.4);border-radius:8px;padding:10px 12px;font-size:.85rem;line-height:1.45;font-style:normal;box-shadow:0 12px 32px rgba(0,0,0,.5);white-space:normal}

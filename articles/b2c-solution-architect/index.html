@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Customer Is the Architecture — Vamshi Bandaru</title>
+<meta name="description" content="I earned the Salesforce Certified B2C Solution Architect credential this week. The exam is less about any one cloud than about the decisions between them — Data 360 as the spine, headless commerce, Agentforce as a new interface, and integration as the thing that makes or breaks all of it. Here is how I think about that architecture, and what Dreamforce 2026 changed.">
+<meta name="author" content="Vamshi Krishna Reddy Bandaru">
+<link rel="canonical" href="https://vamshireddi.com/articles/b2c-solution-architect/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Customer Is the Architecture">
+<meta property="og:description" content="I earned the Salesforce Certified B2C Solution Architect credential this week. The exam is less about any one cloud than about the decisions between them — Data 360 as the spine, headless commerce, Agentforce as a new interface, and integration as the thing that makes or breaks all of it. Here is how I think about that architecture, and what Dreamforce 2026 changed.">
+<meta property="og:url" content="https://vamshireddi.com/articles/b2c-solution-architect/">
+<meta property="og:image" content="https://vamshireddi.com/articles/images/b2c-solution-architect-certificate.jpg">
+<meta property="og:site_name" content="Vamshi Bandaru">
+<meta property="article:published_time" content="2026-09-12T09:00:00-05:00">
+<meta property="article:author" content="https://linkedin.com/in/vamshireddi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Customer Is the Architecture">
+<meta name="twitter:description" content="I earned the Salesforce Certified B2C Solution Architect credential this week. The exam is less about any one cloud than about the decisions between them — Data 360 as the spine, headless commerce, Agentforce as a new interface, and integration as the thing that makes or breaks all of it. Here is how I think about that architecture, and what Dreamforce 2026 changed.">
+<meta name="twitter:image" content="https://vamshireddi.com/articles/images/b2c-solution-architect-certificate.jpg">
+<link rel="alternate" type="application/rss+xml" title="Vamshi Bandaru — Articles" href="/articles/feed.xml">
+<link rel="stylesheet" href="/articles/articles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "The Customer Is the Architecture", "description": "I earned the Salesforce Certified B2C Solution Architect credential this week. The exam is less about any one cloud than about the decisions between them \u2014 Data 360 as the spine, headless commerce, Agentforce as a new interface, and integration as the thing that makes or breaks all of it. Here is how I think about that architecture, and what Dreamforce 2026 changed.", "datePublished": "2026-09-12T09:00:00-05:00", "dateModified": "2026-09-18T00:00:00-05:00", "wordCount": 1961, "keywords": "Salesforce, Architecture, Agentforce, Data 360, Commerce, AI", "author": {"@type": "Person", "name": "Vamshi Krishna Reddy Bandaru", "url": "https://vamshireddi.com"}, "publisher": {"@type": "Person", "name": "Vamshi Krishna Reddy Bandaru", "url": "https://vamshireddi.com"}, "image": "https://vamshireddi.com/articles/images/b2c-solution-architect-certificate.jpg", "mainEntityOfPage": "https://vamshireddi.com/articles/b2c-solution-architect/"}</script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">VKR Bandaru</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/articles/" class="active">Articles</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/Vamshi_Reddy_Bandaru_Resume_2026.pdf">Resume</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header>
+    <div class="eyebrow"><a href="/articles/">Articles</a></div>
+    <h1>The Customer Is the Architecture</h1>
+    <p class="subtitle">Why I sat the Salesforce B2C Solution Architect exam after 17 years on the platform, and what a multi-cloud, agent-first stack actually looks like in 2026</p>
+    <div class="byline">
+      <img src="/photo.jpg" alt="">
+      <div>
+        <div class="who"><a href="/">Vamshi Krishna Reddy Bandaru</a></div>
+        <div class="when">
+          <span>Published <time datetime="2026-09-12T09:00:00-05:00">September 12, 2026</time></span>
+          <span class="updated">Updated <time datetime="2026-09-18T00:00:00-05:00">September 18, 2026</time></span>
+          <span>9 min read · 1,961 words</span>
+        </div>
+      </div>
+    </div>
+    <div class="tags"><a class="tag" href="/articles/?tag=Salesforce">Salesforce</a><a class="tag" href="/articles/?tag=Architecture">Architecture</a><a class="tag" href="/articles/?tag=Agentforce">Agentforce</a><a class="tag" href="/articles/?tag=Data 360">Data 360</a><a class="tag" href="/articles/?tag=Commerce">Commerce</a><a class="tag" href="/articles/?tag=AI">AI</a></div>
+    <figure class="cover"><img src="/articles/images/b2c-solution-architect-certificate.jpg" alt="Salesforce Certified B2C Solution Architect certificate presented to Vamshi Krishna Reddy Bandaru, issued September 12, 2026, credential ID 8126907"></figure>
+    <aside class="toc"><div class="toc-title">In this article</div><div class="toc">
+<ul>
+<li><a href="#the-picture-i-carry-into-every-b2c-conversation">The picture I carry into every B2C conversation</a></li>
+<li><a href="#headless-is-no-longer-a-preference-its-a-requirement">Headless is no longer a preference; it&rsquo;s a requirement</a></li>
+<li><a href="#agentforce-changes-what-an-interface-is">Agentforce changes what an interface is</a></li>
+<li><a href="#where-the-aiml-work-actually-lives">Where the AI/ML work actually lives</a></li>
+<li><a href="#what-leadership-looks-like-on-a-program-like-this">What leadership looks like on a program like this</a></li>
+<li><a href="#what-id-tell-a-team-starting-a-b2c-program-in-2026">What I&rsquo;d tell a team starting a B2C program in 2026</a></li>
+<li><a href="#postscript-what-dreamforce-2026-changed-september-18">Postscript — what Dreamforce 2026 changed (September 18)</a></li>
+<li><a href="#appendix-glossary">Appendix — glossary</a></li>
+</ul>
+</div>
+</aside>
+  </header>
+
+  <article class="prose">
+<p>I&rsquo;ve held the Salesforce Systems Architect and Application Architect credentials for years, and I&rsquo;ve been the design authority on programs where a single decision about the account model or the sharing model touched tens of thousands of users. So when people ask why I sat another architect exam this month, the honest answer is that the B2C Solution Architect credential tests the one thing the other two don&rsquo;t: <strong>the space between the clouds.</strong></p>
+<p>Systems Architect asks whether you can make one platform scale and stay secure. Application Architect asks whether you can build on it well. B2C Solution Architect asks whether you can stand in front of a retailer, a hotel group, or a consumer brand, understand their business, and design how Commerce, Marketing, Service, Loyalty, and <abbr class="gl" data-tip="Salesforce&amp;rsquo;s current name for Data Cloud (renamed at Dreamforce, October 2025)." tabindex="0">Data 360</abbr> become <em>one</em> system for <em>one</em> customer — and how that system survives contact with an <abbr class="gl" data-tip="Enterprise Resource Planning — The back-office system of record (SAP, Oracle) for inventory, pricing, and finance." tabindex="0">ERP</abbr>, a point-of-sale, a payment provider, and now a fleet of AI agents. The exam weights it that way: architectural design at 23%, data models and management at 21%, integration at 19%, functional capabilities and business value at 19%, and discovery and customer success at 18%. Almost half of it is data and integration. That is exactly where B2C programs succeed or fail.</p>
+<p><a href="https://sforce.co/verifycerts">Verify the credential</a> — Credential ID 8126907, issued September 12, 2026. Acronyms (<abbr class="gl" data-tip="Salesforce Commerce API — The REST API layer for B2C Commerce Cloud — Shopper APIs for the customer-facing side, Admin APIs for merchants. Replaces OCAPI." tabindex="0">SCAPI</abbr>, <abbr class="gl" data-tip="Storefront Reference Architecture — Salesforce&amp;rsquo;s server-rendered, template-based B2C storefront that teams customize with cartridges." tabindex="0">SFRA</abbr>, <abbr class="gl" data-tip="Shopper Login and API Access Service — The OAuth/OpenID identity service that issues shopper tokens for SCAPI calls; its hybrid mode lets SFRA and headless pages share one session." tabindex="0">SLAS</abbr>, and the rest) are spelled out in the <a href="#appendix-glossary">glossary at the end</a>.</p>
+<h2 id="the-picture-i-carry-into-every-b2c-conversation">The picture I carry into every B2C conversation</h2>
+<p><img alt="B2C reference architecture: experience surfaces, agent and API layer, engagement clouds, Data 360 spine, systems of record" src="/articles/images/b2c-reference-architecture.svg" /></p>
+<p>Five layers, and the order matters.</p>
+<p>At the top are the <strong>experience surfaces</strong>, and there are more of them every quarter: a composable storefront, a native mobile app, WhatsApp and SMS, a voice agent, a store associate&rsquo;s console, and — new this year — other companies&rsquo; AI assistants shopping on a customer&rsquo;s behalf. Ten years ago the storefront was the architecture. Today it&rsquo;s one client among many.</p>
+<p>Below that sits the <strong>agent and API layer</strong>: the Commerce API and its identity service, Agentforce with its topics and actions, and MuleSoft with <abbr class="gl" data-tip="MuleSoft&amp;rsquo;s pattern of layering System, Process, and Experience APIs so back ends are reused rather than wired point-to-point." tabindex="0">API-led connectivity</abbr> and the <abbr class="gl" data-tip="MuleSoft&amp;rsquo;s registry and governance layer for AI agents — discover, connect, and control agents across systems." tabindex="0">Agent Fabric</abbr> registry. This is the layer that decides whether adding a new surface is a two-week project or a two-quarter one.</p>
+<p>Then the <strong>engagement clouds</strong> — Commerce, Marketing, Service, Loyalty, Experience Cloud — each excellent at its job, each with its own idea of who the customer is unless you stop it.</p>
+<p>Which is why the fourth layer, <strong><abbr class="gl" data-tip="Salesforce&amp;rsquo;s current name for Data Cloud (renamed at Dreamforce, October 2025)." tabindex="0">Data 360</abbr></strong>, is the spine of the whole diagram. Unified profile, identity resolution, consent, calculated insights, and a semantic layer that agents can reason over. If a shopper abandons a cart on the app, opens a service case on the phone, and redeems loyalty points at a counter, there has to be exactly one record of that person, and every cloud and every agent has to read from it. Every B2C failure I&rsquo;ve seen up close traces back to this layer being an afterthought.</p>
+<p>At the bottom are the <strong>systems of record and the ML estate</strong> — <abbr class="gl" data-tip="Enterprise Resource Planning — The back-office system of record (SAP, Oracle) for inventory, pricing, and finance." tabindex="0">ERP</abbr>, inventory, <abbr class="gl" data-tip="Point of Sale — The in-store register and checkout system." tabindex="0">POS</abbr> or <abbr class="gl" data-tip="Property Management System — The hotel operations system (reservations, rooms, folios), relevant in hospitality designs." tabindex="0">PMS</abbr>, payments, the data lake, the models. They don&rsquo;t change often, and they shouldn&rsquo;t have to know about the layers above them.</p>
+<h2 id="headless-is-no-longer-a-preference-its-a-requirement">Headless is no longer a preference; it&rsquo;s a requirement</h2>
+<p>The old debate was <abbr class="gl" data-tip="Storefront Reference Architecture — Salesforce&amp;rsquo;s server-rendered, template-based B2C storefront that teams customize with cartridges." tabindex="0">SFRA</abbr> versus headless — template-driven storefront versus React on top of APIs. That debate is over, and not because React won. It&rsquo;s because the number of front ends exploded. When a customer can start a purchase in a chat window, continue it through a voice agent, and finish it on a phone, the storefront can&rsquo;t own the business logic. The back end has to: catalog, pricing, inventory, cart, promotions, order management — exposed through the Commerce API and consumed by whatever surface the customer happens to be using.</p>
+<p>Salesforce&rsquo;s own direction confirms it. The legacy commerce API was deprecated in April 2026; everything new is built on <abbr class="gl" data-tip="Salesforce Commerce API — The REST API layer for B2C Commerce Cloud — Shopper APIs for the customer-facing side, Admin APIs for merchants. Replaces OCAPI." tabindex="0">SCAPI</abbr>, <abbr class="gl" data-tip="Progressive Web App Kit — Salesforce&amp;rsquo;s open-source React framework for building a headless storefront on SCAPI." tabindex="0">PWA Kit</abbr>, and Managed Runtime, and the B2B side now runs fully headless with &ldquo;two paths, one back end.&rdquo; The architectural consequence is that identity (<abbr class="gl" data-tip="Shopper Login and API Access Service — The OAuth/OpenID identity service that issues shopper tokens for SCAPI calls; its hybrid mode lets SFRA and headless pages share one session." tabindex="0">SLAS</abbr>), session context, and personalization signals have to be designed once at the API layer, not re-implemented per surface. That is a data-and-integration problem wearing a front-end costume.</p>
+<h2 id="agentforce-changes-what-an-interface-is">Agentforce changes what an interface is</h2>
+<p>Here&rsquo;s the shift that I think most architecture diagrams haven&rsquo;t caught up with: an AI agent is not a feature you add to a channel. It&rsquo;s a <em>new channel</em>, and increasingly it&rsquo;s a new <em>customer</em> — because the shopper&rsquo;s own assistant may be the one calling your APIs. Salesforce&rsquo;s numbers from the 2025 holiday season put AI-influenced online sales at roughly 20% of the total, and AI-referred traffic converting at eight times the rate of social traffic. Whether those figures hold everywhere or not, the direction is unambiguous.</p>
+<p>That has three architectural implications I now design for by default. First, <strong>grounding</strong>: an agent is only as trustworthy as the data it can see, so <abbr class="gl" data-tip="Salesforce&amp;rsquo;s current name for Data Cloud (renamed at Dreamforce, October 2025)." tabindex="0">Data 360</abbr> and Knowledge must be curated before the first topic is written. Second, <strong>least privilege</strong>: an agent acts <em>as</em> someone, and it must see only what that person is allowed to see — the same discipline we apply to Experience Cloud users, extended to a system that generates its own queries. Third, <strong>human-in-the-loop by design</strong>: I keep transactional actions deterministic (Flows, Apex, APIs) and let the model decide <em>which</em> action, never <em>how</em> to mutate data — and I build the escalation path to a human agent with full context before I build anything else. I&rsquo;m as enthusiastic about agents as anyone; that&rsquo;s precisely why I&rsquo;m strict about their boundaries.</p>
+<h2 id="where-the-aiml-work-actually-lives">Where the AI/ML work actually lives</h2>
+<p>People assume the machine learning in a B2C stack is &ldquo;the recommendations.&rdquo; It&rsquo;s broader and less glamorous. Identity resolution is a matching problem. Propensity and churn are supervised models that need a feature pipeline out of <abbr class="gl" data-tip="Salesforce&amp;rsquo;s current name for Data Cloud (renamed at Dreamforce, October 2025)." tabindex="0">Data 360</abbr> and back into segmentation. Inventory-aware promotions are optimization. Agent quality is an evaluation problem — utterance sets, regression runs, containment and escalation rates. The architect&rsquo;s job is to know which of these wants a rule, which wants a classical model, and which genuinely needs a large language model, and to say so out loud in a room where the vendor pitch says &ldquo;AI&rdquo; for all of them.</p>
+<p>That judgment is what I spent the last nine months sharpening in the <a href="/articles/nine-months-as-a-student-again/">UT Austin McCombs AI &amp; ML program</a>. Pairing that with a multi-cloud Salesforce credential in the same month wasn&rsquo;t a coincidence. The most valuable person on a B2C program right now is the one who can hold both.</p>
+<h2 id="what-leadership-looks-like-on-a-program-like-this">What leadership looks like on a program like this</h2>
+<p>Multi-cloud programs don&rsquo;t fail on technology. They fail because the commerce team, the marketing team, and the service team each believe they own the customer, and nobody owns the decisions between them. The architect&rsquo;s leadership job is to make those decisions explicit, early, and reversible where possible. In practice that means: run discovery across all the business owners before designing anything, publish a decision log where each choice records the options that were rejected and why, get the data and identity model signed off before automation is built, and chair an architecture board that has the authority to say no to a stream that wants its own copy of the customer.</p>
+<p>The B2C exam tests this in its own way — it&rsquo;s the reason &ldquo;discovery and customer success&rdquo; carries nearly a fifth of the weight. You can&rsquo;t architect what you haven&rsquo;t understood, and you can&rsquo;t lead a program whose stakeholders haven&rsquo;t agreed on what the customer is.</p>
+<h2 id="what-id-tell-a-team-starting-a-b2c-program-in-2026">What I&rsquo;d tell a team starting a B2C program in 2026</h2>
+<p>Design the identity and consent model first, because everything grounds on it. Treat the storefront as one client of the API layer, not the center of the universe. Assume there will be surfaces you haven&rsquo;t planned for, including agents you don&rsquo;t control. Put <abbr class="gl" data-tip="Salesforce&amp;rsquo;s current name for Data Cloud (renamed at Dreamforce, October 2025)." tabindex="0">Data 360</abbr> in the architecture on day one, not as a phase-two analytics project. Be specific about where machine learning earns its keep. And put a human in the loop before you put an agent in front of a customer.</p>
+<h2 id="postscript-what-dreamforce-2026-changed-september-18">Postscript — what Dreamforce 2026 changed (September 18)</h2>
+<p>I wrote the sections above on the day the credential was issued. Three days later, Dreamforce made the direction even clearer. Salesforce introduced <strong>AIforce</strong> — described on stage as a productized step above &ldquo;Headless 360,&rdquo; with Claude, Slack, and the Lightning interface as the first three surfaces; <strong>Koa</strong>, a CRM-specialized model built with NVIDIA; a consolidated &ldquo;harness&rdquo; that names <abbr class="gl" data-tip="Salesforce&amp;rsquo;s current name for Data Cloud (renamed at Dreamforce, October 2025)." tabindex="0">Data 360</abbr>, MuleSoft <abbr class="gl" data-tip="MuleSoft&amp;rsquo;s registry and governance layer for AI agents — discover, connect, and control agents across systems." tabindex="0">Agent Fabric</abbr>, Tableau semantics, and governance as the foundation for agents; and a set of pre-built agents for support, shopping, sales, and finance. It also quietly walked back the spring&rsquo;s product renames — Sales Cloud, Service Cloud, Marketing Cloud, and Commerce Cloud are Sales Cloud, Service Cloud, Marketing Cloud, and Commerce Cloud again.</p>
+<p>None of that changes the diagram above; it confirms it. The surfaces multiply, the data spine gets more important, and the value moves to whoever can design the layer in between.</p>
+<h2 id="appendix-glossary">Appendix — glossary</h2>
+<p>The acronyms used above, spelled out.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full name</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SCAPI</strong></td>
+<td>Salesforce Commerce API</td>
+<td>The REST API layer for B2C Commerce Cloud — Shopper APIs for the customer-facing side, Admin APIs for merchants. Replaces OCAPI.</td>
+</tr>
+<tr>
+<td><strong>OCAPI</strong></td>
+<td>Open Commerce API</td>
+<td>The older Commerce Cloud REST API, deprecated April 2026.</td>
+</tr>
+<tr>
+<td><strong>SFRA</strong></td>
+<td>Storefront Reference Architecture</td>
+<td>Salesforce&rsquo;s server-rendered, template-based B2C storefront that teams customize with cartridges.</td>
+</tr>
+<tr>
+<td><strong>PWA Kit</strong></td>
+<td>Progressive Web App Kit</td>
+<td>Salesforce&rsquo;s open-source React framework for building a headless storefront on SCAPI.</td>
+</tr>
+<tr>
+<td><strong>MRT</strong></td>
+<td>Managed Runtime</td>
+<td>Salesforce-hosted environment where PWA Kit storefronts are deployed (dev/staging/production, CDN, logs).</td>
+</tr>
+<tr>
+<td><strong>SLAS</strong></td>
+<td>Shopper Login and API Access Service</td>
+<td>The OAuth/OpenID identity service that issues shopper tokens for SCAPI calls; its hybrid mode lets SFRA and headless pages share one session.</td>
+</tr>
+<tr>
+<td><strong>PKCE</strong></td>
+<td>Proof Key for Code Exchange</td>
+<td>The OAuth extension SLAS uses so browsers and mobile apps can log in securely without a client secret.</td>
+</tr>
+<tr>
+<td><strong>JWT</strong></td>
+<td>JSON Web Token</td>
+<td>The signed token format SLAS issues for shopper sessions.</td>
+</tr>
+<tr>
+<td><strong>OMS</strong></td>
+<td>Order Management System</td>
+<td>Salesforce Order Management — orders after checkout: fulfillment, returns, service.</td>
+</tr>
+<tr>
+<td><strong>POS</strong></td>
+<td>Point of Sale</td>
+<td>The in-store register and checkout system.</td>
+</tr>
+<tr>
+<td><strong>PMS</strong></td>
+<td>Property Management System</td>
+<td>The hotel operations system (reservations, rooms, folios), relevant in hospitality designs.</td>
+</tr>
+<tr>
+<td><strong>ERP</strong></td>
+<td>Enterprise Resource Planning</td>
+<td>The back-office system of record (SAP, Oracle) for inventory, pricing, and finance.</td>
+</tr>
+<tr>
+<td><strong>CDP</strong></td>
+<td>Customer Data Platform</td>
+<td>The product category Data 360 belongs to: unifies customer data across systems into one profile.</td>
+</tr>
+<tr>
+<td><strong>Data 360</strong></td>
+<td>—</td>
+<td>Salesforce&rsquo;s current name for Data Cloud (renamed at Dreamforce, October 2025).</td>
+</tr>
+<tr>
+<td><strong>API-led connectivity</strong></td>
+<td>—</td>
+<td>MuleSoft&rsquo;s pattern of layering System, Process, and Experience APIs so back ends are reused rather than wired point-to-point.</td>
+</tr>
+<tr>
+<td><strong>Agent Fabric</strong></td>
+<td>—</td>
+<td>MuleSoft&rsquo;s registry and governance layer for AI agents — discover, connect, and control agents across systems.</td>
+</tr>
+<tr>
+<td><strong>SSR</strong></td>
+<td>Server-Side Rendering</td>
+<td>Pages rendered on the server (as PWA Kit does) so they load fast and search engines can index them.</td>
+</tr>
+<tr>
+<td><strong>IdP</strong></td>
+<td>Identity Provider</td>
+<td>The system that authenticates users — Okta, Entra ID, or a customer login service.</td>
+</tr>
+<tr>
+<td><strong>GA</strong></td>
+<td>General Availability</td>
+<td>A product or feature released to all customers, as opposed to beta or pilot.</td>
+</tr>
+</tbody>
+</table>
+<p><em>If you&rsquo;re planning a B2C or agent program and want to compare notes on the architecture, I&rsquo;m easy to reach — see the <a href="/#contact">contact section</a>.</em></p>
+  </article>
+
+  <section class="share">
+    <span>Share this article</span>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://vamshireddi.com/articles/b2c-solution-architect/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://twitter.com/intent/tweet?url=https://vamshireddi.com/articles/b2c-solution-architect/&text=The Customer Is the Architecture" target="_blank" rel="noopener">X</a>
+    <button type="button" id="copyLink" data-url="https://vamshireddi.com/articles/b2c-solution-architect/">Copy link</button>
+  </section>
+
+  <section class="related"><h2>Related articles</h2><ul><li><a href="/articles/nine-months-as-a-student-again/">Nine Months as a Student Again</a><span>September 18, 2026 · 4 min</span></li></ul></section>
+  <nav class="prevnext"><span></span><a class="newer" href="/articles/nine-months-as-a-student-again/"><span>Newer</span>Nine Months as a Student Again</a></nav>
+
+  <aside class="author">
+    <img src="/photo.jpg" alt="Vamshi Krishna Reddy Bandaru">
+    <div><strong>Vamshi Krishna Reddy Bandaru</strong><p>Enterprise AI/ML and Salesforce Architect and founder of Godsreality.org (BibleReal.com, RealApologist.com). Salesforce Certified Systems, Application, and B2C Solution Architect. <a href="/">More about Vamshi →</a> · <a href="https://linkedin.com/in/vamshireddi" rel="noopener" target="_blank">LinkedIn</a></p></div>
+  </aside>
+</main>
+
+<footer class="footer">Built by Vamshi &mdash; 2026 &middot; <a href="/articles/">All articles</a> &middot; <a href="/articles/feed.xml">RSS</a></footer>
+<script>
+// tap-to-show glossary tooltips on touch devices
+document.addEventListener('click',function(e){var a=e.target.closest('abbr.gl');document.querySelectorAll('abbr.gl.open').forEach(function(x){if(x!==a)x.classList.remove('open')});if(a){e.preventDefault();a.classList.toggle('open');}});
+document.getElementById('copyLink')?.addEventListener('click',function(){
+  var b=this,u=b.dataset.url||location.href;
+  (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy link'},1800)}).catch(function(){prompt('Copy this link',u)});
+});
+</script>
+</body>
+</html>

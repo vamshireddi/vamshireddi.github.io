@@ -80,6 +80,8 @@
 
 <footer class="footer">Built by Vamshi &mdash; 2026 &middot; <a href="/articles/">All articles</a> &middot; <a href="/articles/feed.xml">RSS</a></footer>
 <script>
+// tap-to-show glossary tooltips on touch devices
+document.addEventListener('click',function(e){var a=e.target.closest('abbr.gl');document.querySelectorAll('abbr.gl.open').forEach(function(x){if(x!==a)x.classList.remove('open')});if(a){e.preventDefault();a.classList.toggle('open');}});
 document.getElementById('copyLink')?.addEventListener('click',function(){
   var b=this,u=b.dataset.url||location.href;
   (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy link'},1800)}).catch(function(){prompt('Copy this link',u)});

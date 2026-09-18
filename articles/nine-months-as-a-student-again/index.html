@@ -93,8 +93,8 @@
     <button type="button" id="copyLink" data-url="https://vamshireddi.com/articles/nine-months-as-a-student-again/">Copy link</button>
   </section>
 
-  
-  
+  <section class="related"><h2>Related articles</h2><ul><li><a href="/articles/b2c-solution-architect/">The Customer Is the Architecture</a><span>September 12, 2026 · 9 min</span></li></ul></section>
+  <nav class="prevnext"><a class="older" href="/articles/b2c-solution-architect/"><span>Older</span>The Customer Is the Architecture</a><span></span></nav>
 
   <aside class="author">
     <img src="/photo.jpg" alt="Vamshi Krishna Reddy Bandaru">
@@ -104,6 +104,8 @@
 
 <footer class="footer">Built by Vamshi &mdash; 2026 &middot; <a href="/articles/">All articles</a> &middot; <a href="/articles/feed.xml">RSS</a></footer>
 <script>
+// tap-to-show glossary tooltips on touch devices
+document.addEventListener('click',function(e){var a=e.target.closest('abbr.gl');document.querySelectorAll('abbr.gl.open').forEach(function(x){if(x!==a)x.classList.remove('open')});if(a){e.preventDefault();a.classList.toggle('open');}});
 document.getElementById('copyLink')?.addEventListener('click',function(){
   var b=this,u=b.dataset.url||location.href;
   (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy link'},1800)}).catch(function(){prompt('Copy this link',u)});
