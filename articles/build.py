@@ -262,9 +262,9 @@ def build():
     tag_filters = "".join(f'<button class="chip" data-tag="{html.escape(t)}">{html.escape(t)} <span>{n}</span></button>'
                           for t, n in sorted(all_tags.items(), key=lambda kv: (-kv[1], kv[0].lower())))
     listing = render(LIST_TEMPLATE,
-        description="Articles by Vamshi Krishna Reddy Bandaru on Salesforce architecture, applied AI and machine learning, and building software.",
+        description="Writing by Vamshi Krishna Reddy Bandaru on Salesforce architecture, applied AI and machine learning, and building software.",
         url=f"{SITE_URL}/articles/", og_image=DEFAULT_OG, count=len(arts), groups=groups, tag_filters=tag_filters,
-        jsonld=json.dumps({"@context": "https://schema.org", "@type": "Blog", "name": f"{SITE_NAME} — Articles",
+        jsonld=json.dumps({"@context": "https://schema.org", "@type": "Blog", "name": f"{SITE_NAME} — Writing",
                            "url": f"{SITE_URL}/articles/", "author": {"@type": "Person", "name": AUTHOR}}))
     (ROOT / "index.html").write_text(listing, encoding="utf-8")
     print("built articles/index.html")
@@ -288,7 +288,7 @@ def build():
   </item>""" for a in arts)
     (ROOT / "feed.xml").write_text(f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
-  <title>{SITE_NAME} — Articles</title>
+  <title>{SITE_NAME} — Writing</title>
   <link>{SITE_URL}/articles/</link>
   <atom:link href="{SITE_URL}/articles/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Salesforce architecture, applied AI, and building software.</description>
