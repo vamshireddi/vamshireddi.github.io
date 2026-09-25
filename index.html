@@ -45,7 +45,7 @@ color-scheme:dark;
 :root[data-theme="light"]{
 --bg:#faf7f1;--bg-2:#f3eee4;--surface:#ffffff;--surface-2:#fdfbf7;
 --hero-2:#f7f1e6;--hero-3:#f1e8d6;
---gold:#7a5a0a;--gold-dim:#82610e;--gold-deep:#5c4306;--gold-lite:#b8892a;--on-gold:#1a1405;
+--gold:#7a5a0a;--gold-dim:#82610e;--gold-deep:#5c4306;--gold-lite:#b8892a;--on-gold:#fffaf0;
 --blue:#1b3a63;--blue-dim:#142c4d;
 --text:#16130d;--text-2:#4a4436;--text-3:#665e4e;--prose:#2a261d;
 --gold-rgb:138,102,20;--blue-rgb:27,58,99;--ov-rgb:48,38,18;--green-rgb:34,110,44;--sf-rgb:0,95,180;
@@ -59,7 +59,7 @@ color-scheme:light;
  :root:not([data-theme="dark"]){
 --bg:#faf7f1;--bg-2:#f3eee4;--surface:#ffffff;--surface-2:#fdfbf7;
 --hero-2:#f7f1e6;--hero-3:#f1e8d6;
---gold:#7a5a0a;--gold-dim:#82610e;--gold-deep:#5c4306;--gold-lite:#b8892a;--on-gold:#1a1405;
+--gold:#7a5a0a;--gold-dim:#82610e;--gold-deep:#5c4306;--gold-lite:#b8892a;--on-gold:#fffaf0;
 --blue:#1b3a63;--blue-dim:#142c4d;
 --text:#16130d;--text-2:#4a4436;--text-3:#665e4e;--prose:#2a261d;
 --gold-rgb:138,102,20;--blue-rgb:27,58,99;--ov-rgb:48,38,18;--green-rgb:34,110,44;--sf-rgb:0,95,180;
@@ -153,7 +153,8 @@ img{max-width:100%;display:block}
 .cta-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-size:.9rem;font-weight:600;letter-spacing:.3px;transition:all .25s;cursor:pointer;border:none;font-family:var(--font)}
 .btn-ico{flex:none;transition:transform .25s}
-.btn:hover .btn-ico{transform:translateY(2px)}
+.btn:hover .btn-ico.dl{transform:translateY(2px)}
+.ci-ico{display:inline-block;vertical-align:-2px;margin-right:7px;opacity:.85}
 .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:var(--on-gold)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(var(--gold-rgb),.3);color:var(--on-gold)}
 .btn-outline{background:transparent;border:1.5px solid rgba(var(--blue-rgb),.4);color:var(--blue)}
@@ -368,12 +369,12 @@ section:nth-child(even){background:var(--bg-2)}
       <div class="stat"><span class="stat-num">120+</span><span class="stat-label">Team Led</span></div>
     </div>
     <div class="cta-row">
-      <a href="https://www.linkedin.com/in/vamshireddi/" target="_blank" rel="noopener" class="btn btn-primary">LinkedIn</a>
-      <a href="mailto:vamshireddi@gmail.com" class="btn btn-outline">Email</a>
-      <a href="https://www.salesforce.com/trailblazer/vamshireddi" target="_blank" rel="noopener" class="btn btn-outline">Trailblazer</a>
-      <a href="https://www.credly.com/users/vamshireddi/" target="_blank" rel="noopener" class="btn btn-outline">Credly</a>
-      <a href="/AI/" class="btn btn-outline">AI Learning Journey</a>
-      <a href="/Vamshi_Reddy_Bandaru_Resume_2026.pdf" download="Vamshi_Reddy_Bandaru_Resume_2026.pdf" class="btn btn-outline"><svg class="btn-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Download Resume</a>
+      <a href="https://www.linkedin.com/in/vamshireddi/" target="_blank" rel="noopener" class="btn btn-primary"><svg class="btn-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>LinkedIn</a>
+      <a href="mailto:vamshireddi@gmail.com" class="btn btn-outline"><svg class="btn-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</a>
+      <a href="https://www.salesforce.com/trailblazer/vamshireddi" target="_blank" rel="noopener" class="btn btn-outline"><svg class="btn-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l6.5-11 4 6.5 2.5-3.5L21 20z"/></svg>Trailblazer</a>
+      <a href="https://www.credly.com/users/vamshireddi/" target="_blank" rel="noopener" class="btn btn-outline"><svg class="btn-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/></svg>Credly</a>
+      <a href="/AI/" class="btn btn-outline"><svg class="btn-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v5"/></svg>AI Learning Journey</a>
+      <a href="/Vamshi_Reddy_Bandaru_Resume_2026.pdf" download="Vamshi_Reddy_Bandaru_Resume_2026.pdf" class="btn btn-outline"><svg class="btn-ico dl" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Download Resume</a>
     </div>
   </div>
 </section>
@@ -1060,7 +1061,7 @@ section:nth-child(even){background:var(--bg-2)}
         <div class="edu-detail">Python Foundations &middot; Machine Learning &middot; Advanced ML &middot; Neural Networks &middot; NLP with Generative AI &middot; AI Agents for Automation &middot; Computer Vision &middot; Model Deployment</div>
         <div class="edu-year">Dec 2025 &ndash; Sep 2026 &middot; Completed</div>
         <span class="edu-badge">Completed</span>
-        <div style="margin-top:12px"><a href="/AI/" class="btn btn-outline" style="padding:8px 18px;font-size:.8rem">View AI Learning Journey</a></div>
+        <div style="margin-top:12px"><a href="/AI/" class="btn btn-outline" style="padding:8px 18px;font-size:.8rem"><svg class="btn-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v5"/></svg>View AI Learning Journey</a></div>
       </div>
 
       <div class="edu-card reveal reveal-d1">
@@ -1131,7 +1132,7 @@ section:nth-child(even){background:var(--bg-2)}
       </a>
       <!-- ARTICLES:END -->
     </div>
-    <div class="writing-more reveal"><a class="btn btn-outline" href="/articles/">All articles &rarr;</a></div>
+    <div class="writing-more reveal"><a class="btn btn-outline" href="/articles/">All writing &rarr;</a></div>
   </div>
 </section>
 
@@ -1147,23 +1148,23 @@ section:nth-child(even){background:var(--bg-2)}
       </div>
       <div class="contact-grid reveal">
         <div class="contact-item">
-          <div class="contact-item-label">Email</div>
+          <div class="contact-item-label"><svg class="ci-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</div>
           <div class="contact-item-value"><a href="mailto:vamshireddi@gmail.com">vamshireddi@gmail.com</a></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-label">Phone</div>
+          <div class="contact-item-label"><svg class="ci-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Phone</div>
           <div class="contact-item-value"><a href="tel:+14692746315">469-274-6315</a></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-label">LinkedIn</div>
+          <div class="contact-item-label"><svg class="ci-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>LinkedIn</div>
           <div class="contact-item-value"><a href="https://www.linkedin.com/in/vamshireddi/" target="_blank" rel="noopener">linkedin.com/in/vamshireddi</a></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-label">GitHub</div>
+          <div class="contact-item-label"><svg class="ci-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6l-6 6 6 6"/><path d="M16 6l6 6-6 6"/></svg>GitHub</div>
           <div class="contact-item-value"><a href="https://github.com/vamshireddi" target="_blank" rel="noopener">github.com/vamshireddi</a></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-label">Location</div>
+          <div class="contact-item-label"><svg class="ci-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Location</div>
           <div class="contact-item-value">Dallas-Fort Worth, TX</div>
         </div>
       </div>
