@@ -152,6 +152,8 @@ img{max-width:100%;display:block}
 
 .cta-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-size:.9rem;font-weight:600;letter-spacing:.3px;transition:all .25s;cursor:pointer;border:none;font-family:var(--font)}
+.btn-ico{flex:none;transition:transform .25s}
+.btn:hover .btn-ico{transform:translateY(2px)}
 .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:var(--on-gold)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(var(--gold-rgb),.3);color:var(--on-gold)}
 .btn-outline{background:transparent;border:1.5px solid rgba(var(--blue-rgb),.4);color:var(--blue)}
@@ -371,7 +373,7 @@ section:nth-child(even){background:var(--bg-2)}
       <a href="https://www.salesforce.com/trailblazer/vamshireddi" target="_blank" rel="noopener" class="btn btn-outline">Trailblazer</a>
       <a href="https://www.credly.com/users/vamshireddi/" target="_blank" rel="noopener" class="btn btn-outline">Credly</a>
       <a href="/AI/" class="btn btn-outline">AI Learning Journey</a>
-      <a href="/Vamshi_Reddy_Bandaru_Resume_2026.pdf" download="Vamshi_Reddy_Bandaru_Resume_2026.pdf" class="btn btn-outline">Download Resume</a>
+      <a href="/Vamshi_Reddy_Bandaru_Resume_2026.pdf" download="Vamshi_Reddy_Bandaru_Resume_2026.pdf" class="btn btn-outline"><svg class="btn-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Download Resume</a>
     </div>
   </div>
 </section>
