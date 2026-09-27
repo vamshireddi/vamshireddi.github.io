@@ -368,6 +368,29 @@
     setTimeout(function(){r.classList.remove('theming');},340);
   });
 })();
+// wide diagrams: click to open full screen, click again to zoom
+(function(){
+  var imgs=[].slice.call(document.querySelectorAll('.prose p > img:only-child')).filter(function(i){return /\.svg(\?|$)/.test(i.getAttribute('src'))});
+  if(!imgs.length) return;
+  var lb=document.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');
+  lb.innerHTML='<button class="lb-close" type="button">Close ✕</button><div class="lb-inner"><img alt=""></div><div class="lb-tip"><span class=\'lb-d\'>Click the diagram to zoom · Esc to close</span><span class=\'lb-m\'>Swipe to pan · tap to zoom</span></div>';
+  document.body.appendChild(lb);
+  var big=lb.querySelector('img'),last=null;
+  function close(){lb.classList.remove('open','zoom');document.body.classList.remove('lb-lock');if(last)last.focus();}
+  function open(i,btn){big.src=i.src;big.alt=i.alt;lb.classList.add('open');document.body.classList.add('lb-lock');last=btn||i;lb.querySelector('.lb-close').focus();}
+  lb.querySelector('.lb-close').addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-inner'))close();});
+  big.addEventListener('click',function(){lb.classList.toggle('zoom');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))close();});
+  imgs.forEach(function(i){
+    var p=i.parentNode;p.classList.add('fig-wide');
+    var b=document.createElement('button');b.type='button';b.className='fig-hint';
+    b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View full screen';
+    p.appendChild(b);
+    i.addEventListener('click',function(){open(i,b)});
+    b.addEventListener('click',function(){open(i,b)});
+  });
+})();
 // tap-to-show glossary tooltips on touch devices
 document.addEventListener('click',function(e){var a=e.target.closest('abbr.gl');document.querySelectorAll('abbr.gl.open').forEach(function(x){if(x!==a)x.classList.remove('open')});if(a){e.preventDefault();a.classList.toggle('open');}});
 document.getElementById('copyLink')?.addEventListener('click',function(){
