@@ -304,7 +304,7 @@ def build():
   <link>{SITE_URL}/articles/</link>
   <atom:link href="{SITE_URL}/articles/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Salesforce architecture, applied AI, and building software.</description>
-  <lastBuildDate>{rfc822(datetime.datetime.now())}</lastBuildDate>{items}
+  <lastBuildDate>{rfc822(max(a["date"] for a in arts))}</lastBuildDate>{items}
 </channel></rss>
 """, encoding="utf-8")
     print("built articles/feed.xml")
