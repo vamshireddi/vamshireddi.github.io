@@ -24,7 +24,7 @@ Five layers, and the order matters.
 
 At the top are the **experience surfaces**, and there are more of them every quarter: a composable storefront, a native mobile app, WhatsApp and SMS, a voice agent, a store associate's console, and — new this year — other companies' AI assistants shopping on a customer's behalf. Ten years ago the storefront was the architecture. Today it's one client among many.
 
-Below that sits the **agent and API layer**: the Commerce API and its identity service, Agentforce with its topics and actions, and MuleSoft with API-led connectivity and the Agent Fabric registry. This is the layer that decides whether adding a new surface is a two-week project or a two-quarter one.
+Below that sits the **agent and API layer**: the Commerce API and its identity service, Agentforce with its subagents and actions, and MuleSoft with API-led connectivity and the Agent Fabric registry. This is the layer that decides whether adding a new surface is a two-week project or a two-quarter one.
 
 Then the **engagement clouds** — Commerce, Marketing, Service, Loyalty, Experience Cloud — each excellent at its job, each with its own idea of who the customer is unless you stop it.
 
@@ -42,7 +42,7 @@ Salesforce's own direction confirms it. The legacy commerce API was deprecated i
 
 Here's the shift that I think most architecture diagrams haven't caught up with: an AI agent is not a feature you add to a channel. It's a *new channel*, and increasingly it's a new *customer* — because the shopper's own assistant may be the one calling your APIs. Salesforce's numbers from the 2025 holiday season put AI-influenced online sales at roughly 20% of the total, and AI-referred traffic converting at eight times the rate of social traffic. Whether those figures hold everywhere or not, the direction is unambiguous.
 
-That has three architectural implications I now design for by default. First, **grounding**: an agent is only as trustworthy as the data it can see, so Data 360 and Knowledge must be curated before the first topic is written. Second, **least privilege**: an agent acts *as* someone, and it must see only what that person is allowed to see — the same discipline we apply to Experience Cloud users, extended to a system that generates its own queries. Third, **human-in-the-loop by design**: I keep transactional actions deterministic (Flows, Apex, APIs) and let the model decide *which* action, never *how* to mutate data — and I build the escalation path to a human agent with full context before I build anything else. I'm as enthusiastic about agents as anyone; that's precisely why I'm strict about their boundaries.
+That has three architectural implications I now design for by default. First, **grounding**: an agent is only as trustworthy as the data it can see, so Data 360 and Knowledge must be curated before the first subagent is written. Second, **least privilege**: an agent acts *as* someone, and it must see only what that person is allowed to see — the same discipline we apply to Experience Cloud users, extended to a system that generates its own queries. Third, **human-in-the-loop by design**: I keep transactional actions deterministic (Flows, Apex, APIs) and let the model decide *which* action, never *how* to mutate data — and I build the escalation path to a human agent with full context before I build anything else. I'm as enthusiastic about agents as anyone; that's precisely why I'm strict about their boundaries.
 
 ## Where the AI/ML work actually lives
 

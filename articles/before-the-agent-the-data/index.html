@@ -21,7 +21,7 @@
 <meta name="twitter:description" content="I earned the Salesforce Certified Data 360 Consultant credential this week, two weeks after B2C Solution Architect and days after a Dreamforce that took the whole platform headless. AIforce, Claudeforce, Agentforce and the Headless Toolkit make Salesforce reachable from anywhere an agent works, and every one of them reads from the same place, Data 360. Here is how I think about building that foundation so the agents on top of it can be trusted.">
 <meta name="twitter:image" content="https://vamshireddi.com/articles/images/data-360-consultant-certificate.jpg">
 <link rel="alternate" type="application/rss+xml" title="Vamshi Bandaru — Writing" href="/articles/feed.xml">
-<link rel="stylesheet" href="/articles/articles.css?v=a10eeb1d">
+<link rel="stylesheet" href="/articles/articles.css?v=7dc2586b">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Before the Agent, the Data", "description": "I earned the Salesforce Certified Data 360 Consultant credential this week, two weeks after B2C Solution Architect and days after a Dreamforce that took the whole platform headless. AIforce, Claudeforce, Agentforce and the Headless Toolkit make Salesforce reachable from anywhere an agent works, and every one of them reads from the same place, Data 360. Here is how I think about building that foundation so the agents on top of it can be trusted.", "datePublished": "2026-09-27T09:00:00-05:00", "dateModified": "2026-09-27T09:00:00-05:00", "wordCount": 3504, "keywords": "Salesforce, Data 360, Agentforce, AIforce, Architecture, AI, Manufacturing", "author": {"@type": "Person", "name": "Vamshi Krishna Reddy Bandaru", "url": "https://vamshireddi.com"}, "publisher": {"@type": "Person", "name": "Vamshi Krishna Reddy Bandaru", "url": "https://vamshireddi.com"}, "image": "https://vamshireddi.com/articles/images/data-360-consultant-certificate.jpg", "mainEntityOfPage": "https://vamshireddi.com/articles/before-the-agent-the-data/"}</script>
 </head>
 <body>
@@ -371,17 +371,21 @@
 // wide diagrams: click to open full screen, click again to zoom
 (function(){
   var imgs=[].slice.call(document.querySelectorAll('.prose p > img:only-child')).filter(function(i){return /\.svg(\?|$)/.test(i.getAttribute('src'))});
-  if(!imgs.length) return;
+  var covers=[].slice.call(document.querySelectorAll('figure.cover img'));
+  if(!imgs.length&&!covers.length) return;
   var lb=document.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');
-  lb.innerHTML='<button class="lb-close" type="button">Close ✕</button><div class="lb-inner"><img alt=""></div><div class="lb-tip"><span class=\'lb-d\'>Click the diagram to zoom · Esc to close</span><span class=\'lb-m\'>Swipe to pan · tap to zoom</span></div>';
+  lb.innerHTML='<button class="lb-close" type="button">Close ✕</button><div class="lb-inner"><img alt=""></div><div class="lb-tip"><span class=\'lb-d\'>Click to zoom · Esc to close</span><span class=\'lb-m\'>Swipe to pan · tap to zoom</span></div>';
   document.body.appendChild(lb);
   var big=lb.querySelector('img'),last=null;
   function close(){lb.classList.remove('open','zoom');document.body.classList.remove('lb-lock');if(last)last.focus();}
-  function open(i,btn){big.src=i.src;big.alt=i.alt;lb.classList.add('open');document.body.classList.add('lb-lock');last=btn||i;lb.querySelector('.lb-close').focus();}
+  function open(i,btn){var r=i.getBoundingClientRect();big.style.setProperty('--r',(r.width&&r.height)?(r.width/r.height).toFixed(3):'1.75');big.src=i.src;big.alt=i.alt;lb.classList.add('open');document.body.classList.add('lb-lock');last=btn||i;lb.querySelector('.lb-close').focus();}
   lb.querySelector('.lb-close').addEventListener('click',close);
   lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-inner'))close();});
   big.addEventListener('click',function(){lb.classList.toggle('zoom');});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))close();});
+  covers.forEach(function(i){i.classList.add('zoomable');i.setAttribute('tabindex','0');i.setAttribute('role','button');i.setAttribute('aria-label','View full screen: '+i.alt);
+    i.addEventListener('click',function(){open(i)});
+    i.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(i)}});});
   imgs.forEach(function(i){
     var p=i.parentNode;p.classList.add('fig-wide');
     var b=document.createElement('button');b.type='button';b.className='fig-hint';
