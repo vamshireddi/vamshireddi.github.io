@@ -4,7 +4,15 @@
   <link>https://vamshireddi.com/articles/</link>
   <atom:link href="https://vamshireddi.com/articles/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Salesforce architecture, applied AI, and building software.</description>
-  <lastBuildDate>Sat, 26 Sep 2026 00:09:00 -0500</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 10:27:00 -0500</lastBuildDate>
+  <item>
+    <title>Before the Agent, the Data</title>
+    <link>https://vamshireddi.com/articles/before-the-agent-the-data/</link>
+    <guid isPermaLink="true">https://vamshireddi.com/articles/before-the-agent-the-data/</guid>
+    <pubDate>Sun, 27 Sep 2026 09:00:00 -0500</pubDate>
+    <author>Vamshi Krishna Reddy Bandaru</author><category>Salesforce</category><category>Data 360</category><category>Agentforce</category><category>AIforce</category><category>Architecture</category><category>AI</category><category>Manufacturing</category>
+    <description>I earned the Salesforce Certified Data 360 Consultant credential this week, two weeks after B2C Solution Architect and days after a Dreamforce that took the whole platform headless. AIforce, Claudeforce, Agentforce and the Headless Toolkit make Salesforce reachable from anywhere an agent works, and every one of them reads from the same place, Data 360. Here is how I think about building that foundation so the agents on top of it can be trusted.</description>
+  </item>
   <item>
     <title>Nine Months as a Student Again</title>
     <link>https://vamshireddi.com/articles/nine-months-as-a-student-again/</link>

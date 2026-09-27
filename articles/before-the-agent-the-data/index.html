@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before the Agent, the Data — Vamshi Bandaru</title>
+<meta name="description" content="I earned the Salesforce Certified Data 360 Consultant credential this week, two weeks after B2C Solution Architect and days after a Dreamforce that took the whole platform headless. AIforce, Claudeforce, Agentforce and the Headless Toolkit make Salesforce reachable from anywhere an agent works, and every one of them reads from the same place, Data 360. Here is how I think about building that foundation so the agents on top of it can be trusted.">
+<meta name="author" content="Vamshi Krishna Reddy Bandaru">
+<link rel="canonical" href="https://vamshireddi.com/articles/before-the-agent-the-data/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Before the Agent, the Data">
+<meta property="og:description" content="I earned the Salesforce Certified Data 360 Consultant credential this week, two weeks after B2C Solution Architect and days after a Dreamforce that took the whole platform headless. AIforce, Claudeforce, Agentforce and the Headless Toolkit make Salesforce reachable from anywhere an agent works, and every one of them reads from the same place, Data 360. Here is how I think about building that foundation so the agents on top of it can be trusted.">
+<meta property="og:url" content="https://vamshireddi.com/articles/before-the-agent-the-data/">
+<meta property="og:image" content="https://vamshireddi.com/articles/images/data-360-consultant-certificate.jpg">
+<meta property="og:site_name" content="Vamshi Bandaru">
+<meta property="article:published_time" content="2026-09-27T09:00:00-05:00">
+<meta property="article:author" content="https://linkedin.com/in/vamshireddi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Before the Agent, the Data">
+<meta name="twitter:description" content="I earned the Salesforce Certified Data 360 Consultant credential this week, two weeks after B2C Solution Architect and days after a Dreamforce that took the whole platform headless. AIforce, Claudeforce, Agentforce and the Headless Toolkit make Salesforce reachable from anywhere an agent works, and every one of them reads from the same place, Data 360. Here is how I think about building that foundation so the agents on top of it can be trusted.">
+<meta name="twitter:image" content="https://vamshireddi.com/articles/images/data-360-consultant-certificate.jpg">
+<link rel="alternate" type="application/rss+xml" title="Vamshi Bandaru — Writing" href="/articles/feed.xml">
+<link rel="stylesheet" href="/articles/articles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Before the Agent, the Data", "description": "I earned the Salesforce Certified Data 360 Consultant credential this week, two weeks after B2C Solution Architect and days after a Dreamforce that took the whole platform headless. AIforce, Claudeforce, Agentforce and the Headless Toolkit make Salesforce reachable from anywhere an agent works, and every one of them reads from the same place, Data 360. Here is how I think about building that foundation so the agents on top of it can be trusted.", "datePublished": "2026-09-27T09:00:00-05:00", "dateModified": "2026-09-27T09:00:00-05:00", "wordCount": 3504, "keywords": "Salesforce, Data 360, Agentforce, AIforce, Architecture, AI, Manufacturing", "author": {"@type": "Person", "name": "Vamshi Krishna Reddy Bandaru", "url": "https://vamshireddi.com"}, "publisher": {"@type": "Person", "name": "Vamshi Krishna Reddy Bandaru", "url": "https://vamshireddi.com"}, "image": "https://vamshireddi.com/articles/images/data-360-consultant-certificate.jpg", "mainEntityOfPage": "https://vamshireddi.com/articles/before-the-agent-the-data/"}</script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">VKR Bandaru</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/articles/" class="active">Writing</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/Vamshi_Reddy_Bandaru_Resume_2026.pdf">Resume</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Switch between light and dark theme" title="Switch theme">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header>
+    <div class="eyebrow"><a href="/articles/">Writing</a></div>
+    <h1>Before the Agent, the Data</h1>
+    <p class="subtitle">Why I sat the Salesforce Data 360 Consultant exam two weeks after B2C, and why Dreamforce 2026 put the data layer underneath everything from Agentforce to AIforce and Claudeforce</p>
+    <div class="byline">
+      <img src="/photo.jpg" alt="">
+      <div>
+        <div class="who"><a href="/">Vamshi Krishna Reddy Bandaru</a></div>
+        <div class="when">
+          <span>Published <time datetime="2026-09-27T09:00:00-05:00">September 27, 2026</time></span>
+          
+          <span>16 min read · 3,504 words</span>
+        </div>
+      </div>
+    </div>
+    <div class="tags"><a class="tag" href="/articles/?tag=Salesforce">Salesforce</a><a class="tag" href="/articles/?tag=Data 360">Data 360</a><a class="tag" href="/articles/?tag=Agentforce">Agentforce</a><a class="tag" href="/articles/?tag=AIforce">AIforce</a><a class="tag" href="/articles/?tag=Architecture">Architecture</a><a class="tag" href="/articles/?tag=AI">AI</a><a class="tag" href="/articles/?tag=Manufacturing">Manufacturing</a></div>
+    <figure class="cover"><img src="/articles/images/data-360-consultant-certificate.jpg" alt="Salesforce Certified Data 360 Consultant certificate presented to Vamshi Krishna Reddy Bandaru, issued September 26, 2026, credential ID 8164566"></figure>
+    <aside class="toc"><div class="toc-title">In this article</div><div class="toc">
+<ul>
+<li><a href="#the-stack-after-dreamforce-2026">The stack after Dreamforce 2026</a></li>
+<li><a href="#inside-the-data-layer-five-stages-from-source-to-agent">Inside the data layer: five stages from source to agent</a></li>
+<li><a href="#harmonization-is-where-programs-are-won-or-lost">Harmonization is where programs are won or lost</a></li>
+<li><a href="#identity-resolution-is-a-business-decision-first">Identity resolution is a business decision first</a></li>
+<li><a href="#zero-copy-when-to-leave-the-data-where-it-lives">Zero copy: when to leave the data where it lives</a></li>
+<li><a href="#grounding-agents-is-the-part-everyone-wants-to-skip">Grounding agents is the part everyone wants to skip</a></li>
+<li><a href="#what-this-looks-like-for-a-manufacturer">What this looks like for a manufacturer</a></li>
+<li><a href="#design-for-the-bill">Design for the bill</a></li>
+<li><a href="#what-id-tell-a-team-starting-a-data-360-program">What I&rsquo;d tell a team starting a Data 360 program</a></li>
+<li><a href="#appendix-glossary">Appendix: glossary</a></li>
+</ul>
+</div>
+</aside>
+  </header>
+
+  <article class="prose">
+<p>Two weeks ago I wrote that <a href="/articles/b2c-solution-architect/">the customer is the architecture</a>, and that in any multi-cloud Salesforce program <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> is the spine everything else hangs from. This week I sat the exam that tests whether you can actually build that spine. I passed, and I&rsquo;m now a Salesforce Certified <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> Consultant.</p>
+<p>The timing matters. The exam came days after a Dreamforce where Salesforce stopped treating its own screens as the center of the platform. <abbr class="gl" data-tip="AIforce — Salesforce&amp;rsquo;s layer, announced at Dreamforce 2026, that brings Salesforce data, workflows and logic to the surfaces where people and agents work, starting with Claude, Slack and Lightning." tabindex="0">AIforce</abbr> brings Salesforce into Claude, Slack and Lightning. The <abbr class="gl" data-tip="Headless Toolkit (introduced as Headless 360) — Salesforce&amp;rsquo;s open architecture that exposes every platform capability as an API, MCP tool or CLI command. Introduced at TDX in April 2026." tabindex="0">Headless Toolkit</abbr> turns every capability into an API, an <abbr class="gl" data-tip="Model Context Protocol — An open standard for connecting AI agents to tools and data sources." tabindex="0">MCP</abbr> tool or a command. <abbr class="gl" data-tip="Salesforce Agentforce — Salesforce&amp;rsquo;s platform for building and running AI agents." tabindex="0">Agentforce</abbr> agents can now reason on Claude or on Salesforce&rsquo;s own new model, <abbr class="gl" data-tip="Koa — Salesforce&amp;rsquo;s CRM reasoning model, built on NVIDIA Nemotron. In pilot, with general availability expected in winter 2026." tabindex="0">Koa</abbr>. Look underneath any of those announcements and you find the same thing: <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr>, supplying the context. The more places an agent can act, the more it matters that what it knows is right.</p>
+<p>A fair question is why someone who already holds the Systems Architect, Application Architect and B2C Solution Architect credentials would sit a consultant exam. The architect exams test whether you know where <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> belongs in a design. This one tests whether you know how it behaves once real data arrives. In 2026 that second skill is where AI programs are being won and lost.</p>
+<p>The exam&rsquo;s weighting makes the point. Data Activations and Utilization is 20%. Data Source Connection and Ingestion is 18%. Data Enhancements, Sharing, and Analysis is 18%. <abbr class="gl" data-tip="Data harmonization — Mapping source data onto a shared model so that different systems mean the same thing." tabindex="0">Harmonization</abbr> and Unification is 17%. Solution Positioning is 14%, and <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> Setup and Administration is 13%. More than half of it is about getting data in, making it agree with itself, and putting it to work.</p>
+<p>A note on names, because they keep moving. Salesforce renamed Data Cloud to <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> at Dreamforce in October 2025, as the data layer of <abbr class="gl" data-tip="Salesforce Agentforce — Salesforce&amp;rsquo;s platform for building and running AI agents." tabindex="0">Agentforce</abbr> 360, and the certification took the new name in March 2026 with the same exam code. <a href="https://sforce.co/verifycerts">Verify the credential</a>: credential ID 8164566, issued September 26, 2026. Terms are spelled out in the <a href="#appendix-glossary">glossary at the end</a>.</p>
+<h2 id="the-stack-after-dreamforce-2026">The stack after Dreamforce 2026</h2>
+<p><img alt="The Salesforce agentic stack after Dreamforce 2026: AIforce surfaces, the Headless Toolkit, agents and reasoning, Data 360 context, and systems of record, wrapped by the Trusted Enterprise AI Harness" src="/articles/images/agentic-stack-2026.svg" /></p>
+<p>Dreamforce 2026 produced a lot of new names. Set side by side, they form a stack, and it reads best from the top down.</p>
+<p><strong>Surfaces.</strong> <abbr class="gl" data-tip="AIforce — Salesforce&amp;rsquo;s layer, announced at Dreamforce 2026, that brings Salesforce data, workflows and logic to the surfaces where people and agents work, starting with Claude, Slack and Lightning." tabindex="0">AIforce</abbr>, announced on September 15, is Salesforce&rsquo;s layer for bringing its data, workflows and logic to wherever people and agents already work. It launched with three surfaces. <abbr class="gl" data-tip="Claudeforce — The Salesforce and Anthropic partnership that puts Salesforce inside Claude. In beta for all customers since Dreamforce 2026." tabindex="0">Claudeforce</abbr>, the Salesforce and Anthropic partnership, puts Salesforce inside Claude, and has been open to all customers in beta since Dreamforce. <abbr class="gl" data-tip="Slackforce — The AIforce surface that brings Salesforce into Slack." tabindex="0">Slackforce</abbr> brings it into Slack. <abbr class="gl" data-tip="Agentforce Coworker — The AIforce surface in Lightning, available now." tabindex="0">Agentforce Coworker</abbr> brings it into Lightning and is available now.</p>
+<p><strong>Headless.</strong> Underneath <abbr class="gl" data-tip="AIforce — Salesforce&amp;rsquo;s layer, announced at Dreamforce 2026, that brings Salesforce data, workflows and logic to the surfaces where people and agents work, starting with Claude, Slack and Lightning." tabindex="0">AIforce</abbr> is what Salesforce now calls the <abbr class="gl" data-tip="Headless Toolkit (introduced as Headless 360) — Salesforce&amp;rsquo;s open architecture that exposes every platform capability as an API, MCP tool or CLI command. Introduced at TDX in April 2026." tabindex="0">Headless Toolkit</abbr>, introduced as Headless 360 at TDX in April. The idea is simple: every capability on the platform is exposed as an API, an <abbr class="gl" data-tip="Model Context Protocol — An open standard for connecting AI agents to tools and data sources." tabindex="0">MCP</abbr> tool or a command-line action, so an agent doesn&rsquo;t need a screen to use it. <abbr class="gl" data-tip="Headless Data 360 — Exposes more than 200 Data 360 APIs to AI agents over MCP. Announced August 2026." tabindex="0">Headless Data 360</abbr>, announced in August, does the same for data, exposing more than 200 <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> APIs to agents over <abbr class="gl" data-tip="Model Context Protocol — An open standard for connecting AI agents to tools and data sources." tabindex="0">MCP</abbr>. In the B2C article I argued that headless had stopped being a preference and become a requirement. Dreamforce made that true for the whole platform.</p>
+<p><strong>Agents and reasoning.</strong> <abbr class="gl" data-tip="Salesforce Agentforce — Salesforce&amp;rsquo;s platform for building and running AI agents." tabindex="0">Agentforce</abbr> is still where agents are built and run, with subagents (called topics until April), multi-agent orchestration and a growing set of job-ready agents. The model underneath is becoming a choice. Claude serves as a reasoning model for <abbr class="gl" data-tip="Salesforce Agentforce — Salesforce&amp;rsquo;s platform for building and running AI agents." tabindex="0">Agentforce</abbr>&rsquo;s <abbr class="gl" data-tip="Atlas Reasoning Engine — The reasoning engine behind Agentforce agents." tabindex="0">Atlas Reasoning Engine</abbr> and is the default in <abbr class="gl" data-tip="Agentforce Coworker — The AIforce surface in Lightning, available now." tabindex="0">Agentforce Coworker</abbr>. <abbr class="gl" data-tip="Koa — Salesforce&amp;rsquo;s CRM reasoning model, built on NVIDIA Nemotron. In pilot, with general availability expected in winter 2026." tabindex="0">Koa</abbr>, Salesforce&rsquo;s CRM reasoning model built on NVIDIA Nemotron, is in pilot, with general availability expected this winter. <abbr class="gl" data-tip="MuleSoft Agent Fabric — MuleSoft&amp;rsquo;s layer for discovering, governing and orchestrating AI agents across systems." tabindex="0">MuleSoft Agent Fabric</abbr> governs and orchestrates agents across systems, including agents Salesforce didn&rsquo;t build.</p>
+<p><strong>Context.</strong> This is <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr>: harmonized, unified and federated data, plus the new <abbr class="gl" data-tip="Agent Context Engine (ACE) — A Data 360 capability that assembles governed, authorized context for agents from structured and unstructured sources. Announced at Dreamforce 2026." tabindex="0">Agent Context Engine</abbr>, which assembles governed, authorized context for an agent across relational, profile, search, graph and federated sources. It was announced at Dreamforce, with general availability expected later this year.</p>
+<p><strong>Systems of record.</strong> The <abbr class="gl" data-tip="Enterprise Resource Planning — The back-office system of record, such as SAP or Oracle, for orders, inventory and finance." tabindex="0">ERP</abbr>, dealer and distributor systems, service and warranty, connected products and the data lake. Dreamforce doesn&rsquo;t change them, and it shouldn&rsquo;t have to.</p>
+<p>Salesforce wraps all of this in what it calls the <abbr class="gl" data-tip="Trusted Enterprise AI Harness — Salesforce&amp;rsquo;s architecture for trusted context, agency, action, governance, security and models across the enterprise, including the AI Control Plane." tabindex="0">Trusted Enterprise AI Harness</abbr>, covering context, agency, action, governance, security and models, with a new AI Control Plane for seeing and managing agents across the enterprise. The foundations exist today, and the unified experience rolls out from early in Salesforce&rsquo;s fiscal 2028.</p>
+<p>Here is what I take from the stack. The top layers are multiplying. A year ago an agent lived inside one Salesforce interface. Now the same customer record might be read by an agent in Claude, a bot in Slack, a coworker in Lightning and a partner&rsquo;s agent over <abbr class="gl" data-tip="Model Context Protocol — An open standard for connecting AI agents to tools and data sources." tabindex="0">MCP</abbr>, all in the same afternoon. Every one of them grounds on layer four. Headless doesn&rsquo;t make the data layer less important. It removes the last screen that used to hide its mistakes.</p>
+<h2 id="inside-the-data-layer-five-stages-from-source-to-agent">Inside the data layer: five stages from source to agent</h2>
+<p><img alt="Data 360 reference flow: enterprise sources, ingestion, harmonization, unification, and activation for people and agents, with governance across every stage" src="/articles/images/data-360-reference-flow.svg" /></p>
+<p>Inside <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr>, I draw the work as a flow from left to right, because that&rsquo;s the order the problems show up in.</p>
+<p><strong>Sources</strong> are everything the enterprise already runs: the Salesforce clouds, an <abbr class="gl" data-tip="Enterprise Resource Planning — The back-office system of record, such as SAP or Oracle, for orders, inventory and finance." tabindex="0">ERP</abbr>, dealer or distributor systems, service and warranty, connected-product telemetry, and very often a data lake that another team owns. None of them agree on who the customer is.</p>
+<p><strong>Ingestion</strong> brings that data in through data streams, whether from native connectors, the Ingestion API, MuleSoft or cloud storage. It lands first in data lake objects, in essentially the shape the source sent it. Some of it never needs to land at all, which is what zero copy is for.</p>
+<p><strong><abbr class="gl" data-tip="Data harmonization — Mapping source data onto a shared model so that different systems mean the same thing." tabindex="0">Harmonization</abbr></strong> maps those raw objects onto data model objects in a common model. This is where &ldquo;account,&rdquo; &ldquo;customer,&rdquo; &ldquo;dealer&rdquo; and &ldquo;sold-to party&rdquo; either get reconciled into shared definitions or quietly don&rsquo;t.</p>
+<p><strong>Unification</strong> runs identity resolution. <abbr class="gl" data-tip="Match rules — The criteria (exact, exact normalized or fuzzy) that decide two records are the same entity." tabindex="0">Match rules</abbr> decide which records are the same person or company, and reconciliation rules decide which value wins when they disagree. The output is a unified profile.</p>
+<p><strong>Activation</strong> is where the value finally shows up: calculated and streaming insights, segments sent to marketing and advertising targets, data actions that trigger flows, and grounding for <abbr class="gl" data-tip="Salesforce Agentforce — Salesforce&amp;rsquo;s platform for building and running AI agents." tabindex="0">Agentforce</abbr> and for every other agent that now reads through <abbr class="gl" data-tip="AIforce — Salesforce&amp;rsquo;s layer, announced at Dreamforce 2026, that brings Salesforce data, workflows and logic to the surfaces where people and agents work, starting with Claude, Slack and Lightning." tabindex="0">AIforce</abbr> or <abbr class="gl" data-tip="Model Context Protocol — An open standard for connecting AI agents to tools and data sources." tabindex="0">MCP</abbr>.</p>
+<p>Every stage runs under the same governance: data spaces that separate brands or regions, consent, access policies, and a consumption meter that is always running.</p>
+<h2 id="harmonization-is-where-programs-are-won-or-lost">Harmonization is where programs are won or lost</h2>
+<p>If I had to pick the stage where <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> programs actually fail, it&rsquo;s harmonization, and it&rsquo;s rarely for technical reasons.</p>
+<p>Mapping a field is easy. Agreeing on what the field means is not. On the large programs I&rsquo;ve led, the hardest conversations were seldom about which feature to use. They were about which system&rsquo;s version of an account was the true one, and who had the authority to decide. A data model object can&rsquo;t settle that for you. It makes the disagreement visible, which is useful if someone owns the decision and painful if nobody does.</p>
+<p>So I treat the common model as a governance artifact first and a technical artifact second. Before a single stream is mapped, I want a short, signed-off list: what counts as a customer, what counts as an account, which source is authoritative for each attribute, and who arbitrates when two sources conflict. It&rsquo;s an unglamorous document. It saves months.</p>
+<h2 id="identity-resolution-is-a-business-decision-first">Identity resolution is a business decision first</h2>
+<p><abbr class="gl" data-tip="Identity resolution — The process that decides which records represent the same person or company and merges them into a unified profile." tabindex="0">Identity resolution</abbr> looks like a matching algorithm, and technically it is. <abbr class="gl" data-tip="Match rules — The criteria (exact, exact normalized or fuzzy) that decide two records are the same entity." tabindex="0">Match rules</abbr> can be exact, exact normalized or fuzzy, and they run on identifiers such as email, phone, name, address, party identifiers and keys you bring yourself. But every rule is also a decision about risk.</p>
+<p>Match too loosely and you merge two different people, or two companies that share a billing address or a switchboard number, and an agent confidently tells one of them about the other&rsquo;s order. Match too tightly and the same customer exists five times, each record holding a fifth of the story. Neither error announces itself. Both show up later as bad segments, wrong answers and a loss of trust that is hard to win back.</p>
+<p>In B2B and manufacturing the problem is harder than in consumer retail, because the unit that matters is usually the company, not the individual, and one real-world company can appear as a dozen sold-to, ship-to and bill-to records across <abbr class="gl" data-tip="Enterprise Resource Planning — The back-office system of record, such as SAP or Oracle, for orders, inventory and finance." tabindex="0">ERP</abbr> and CRM. <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> can resolve accounts as well as individuals, and in a manufacturing program I&rsquo;d expect the account rules to carry more weight than the individual ones.</p>
+<p>My practice is simple. Start with deterministic rules on identifiers you trust. Add fuzzy matching only where you can measure its error rate on a sample the business has reviewed. And keep the reconciliation rules (source priority, most recent, most frequent) written down next to the reason for each one, because someone will ask.</p>
+<h2 id="zero-copy-when-to-leave-the-data-where-it-lives">Zero copy: when to leave the data where it lives</h2>
+<p>Most enterprises I work with already have a serious data platform, often Snowflake or Databricks, with a team that owns it. The instinct to copy all of that into Salesforce is understandable and usually wrong.</p>
+<p><abbr class="gl" data-tip="Zero-copy data federation — Working with data where it lives, for example in Snowflake or Databricks, instead of copying it in." tabindex="0">Zero copy</abbr> lets <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> work with data where it already lives instead of ingesting it. My rule of thumb:</p>
+<table>
+<thead>
+<tr>
+<th>Leave it where it lives</th>
+<th>Bring it in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Large, slow-moving history owned by another team</td>
+<td>Identifiers needed for identity resolution</td>
+</tr>
+<tr>
+<td>Used for insights and segmentation, not per-record decisions</td>
+<td>Data that has to trigger something in near real time</td>
+</tr>
+<tr>
+<td>Already governed and modeled in the lake</td>
+<td>Data an agent needs at low latency to answer a customer</td>
+</tr>
+<tr>
+<td>Copying it would create a second source of truth</td>
+<td>Sources with no warehouse behind them</td>
+</tr>
+</tbody>
+</table>
+<p>The trade-off to name early is cost. Live query federation against a warehouse such as Snowflake, Databricks, BigQuery or Redshift still draws on <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> consumption and also runs on the warehouse&rsquo;s compute, so there are two bills owned by two different teams. File federation over open table formats such as Iceberg shifts that balance. Either way, someone should model the cost on purpose. Dreamforce widened the options again, adding more AWS sources that are available now and more Google BigQuery connectivity due this fall.</p>
+<p>This is also where the relationship with the data team becomes either a partnership or a turf war. <abbr class="gl" data-tip="Zero-copy data federation — Working with data where it lives, for example in Snowflake or Databricks, instead of copying it in." tabindex="0">Zero copy</abbr> makes it a partnership: their platform stays the system of record for analytics, and Salesforce becomes the place where that data gets acted on.</p>
+<h2 id="grounding-agents-is-the-part-everyone-wants-to-skip">Grounding agents is the part everyone wants to skip</h2>
+<p>Nearly every executive conversation I&rsquo;ve had this year eventually reaches agents. The demos are compelling. What the demos don&rsquo;t show is that an agent is only as good as what it&rsquo;s allowed to know, at the moment it needs to know it.</p>
+<p>That&rsquo;s the real job <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> does for agents, and Dreamforce made it explicit. Structured context comes from unified profiles and data graphs, which pre-assemble the related records an agent needs so it isn&rsquo;t stitching them together mid-conversation. Unstructured context, such as manuals, policies, contracts and past cases, comes through search indexes and retrievers that make documents searchable by meaning. The <abbr class="gl" data-tip="Agent Context Engine (ACE) — A Data 360 capability that assembles governed, authorized context for agents from structured and unstructured sources. Announced at Dreamforce 2026." tabindex="0">Agent Context Engine</abbr> is Salesforce&rsquo;s move to assemble all of that, with authorization applied, before the agent ever sees it.</p>
+<p>Headless changes who is doing the reading. With <abbr class="gl" data-tip="Headless Data 360 — Exposes more than 200 Data 360 APIs to AI agents over MCP. Announced August 2026." tabindex="0">Headless Data 360</abbr> and <abbr class="gl" data-tip="AIforce — Salesforce&amp;rsquo;s layer, announced at Dreamforce 2026, that brings Salesforce data, workflows and logic to the surfaces where people and agents work, starting with Claude, Slack and Lightning." tabindex="0">AIforce</abbr>, the agent may not be inside Salesforce at all. A seller asking about an account through <abbr class="gl" data-tip="Claudeforce — The Salesforce and Anthropic partnership that puts Salesforce inside Claude. In beta for all customers since Dreamforce 2026." tabindex="0">Claudeforce</abbr> grounds on the same <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> profile as an <abbr class="gl" data-tip="Salesforce Agentforce — Salesforce&amp;rsquo;s platform for building and running AI agents." tabindex="0">Agentforce</abbr> subagent in the service console. If that profile is wrong, both of them are wrong, in two different places, in front of two different people.</p>
+<p>I&rsquo;ve built retrieval systems outside Salesforce, including semantic search across a few million vectors for a nonprofit platform I run, and the lesson carries over directly: retrieval quality is a data problem before it&rsquo;s a model problem. Chunking, metadata, freshness and access control decide whether the answer is right far more than the choice of model does. An agent that can see stale inventory, or a contract it shouldn&rsquo;t have access to, doesn&rsquo;t have an AI problem. It has a data governance problem that happens to talk.</p>
+<p>So my sequence doesn&rsquo;t change: harmonize, resolve identity, set access and consent, curate the retrieval sources, and only then build the first subagent or open the data to an outside surface.</p>
+<h2 id="what-this-looks-like-for-a-manufacturer">What this looks like for a manufacturer</h2>
+<p>Manufacturing is a good test of all of this, because the data is spread across more systems than almost anywhere else.</p>
+<p>Orders and sales agreements live in the <abbr class="gl" data-tip="Enterprise Resource Planning — The back-office system of record, such as SAP or Oracle, for orders, inventory and finance." tabindex="0">ERP</abbr>. Accounts and opportunities live in Sales Cloud. Dealers and distributors have their own systems and their own identifiers. Warranty claims and service cases sit somewhere else again. Connected products send telemetry that nobody has tied to a customer record. Each system is good at its own job, and none of them can answer a simple question on its own: which of our largest accounts has rising warranty claims on a product line they&rsquo;re about to reorder?</p>
+<p><abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> can answer that question, but not by boiling the ocean. The programs that work start with one use case that matters to someone with a budget, such as service-driven retention, forecast accuracy on sales agreements or dealer performance, and build only the ingestion, harmonization and identity resolution that use case needs. The second use case is then cheaper, because the foundation is already in place. The programs that stall try to unify everything first and deliver value later.</p>
+<p>Headless makes the payoff bigger. Once that account view exists, a sales leader can ask for it in Claude, a service manager can see it in Lightning, and a dealer-facing agent can use it over <abbr class="gl" data-tip="Model Context Protocol — An open standard for connecting AI agents to tools and data sources." tabindex="0">MCP</abbr>, without anyone building three separate integrations.</p>
+<h2 id="design-for-the-bill">Design for the bill</h2>
+<p><abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> pricing changed again this year. Since March it has run on <abbr class="gl" data-tip="Flex Credits — Salesforce&amp;rsquo;s consumption currency, used for Data 360 since March 2026." tabindex="0">Flex Credits</abbr> alongside per-profile editions, and Salesforce&rsquo;s pricing page now advertises free batch ingestion, while streaming and most of the downstream processing still consume. The details will keep moving, so I won&rsquo;t quote figures that may be out of date by the time you read this.</p>
+<p>The principle is stable. Streaming, transforms, unification, insights, segmentation, queries and activation all consume, and a design choice made casually in week two can set the run rate in year two. In practice that means estimating consumption as part of the architecture, not after go-live. It means choosing batch over streaming unless something genuinely needs real time, preferring incremental loads, scheduling calculated insights at the cadence the business actually uses, and reviewing consumption monthly with the same seriousness as a cloud bill. Headless adds one more line to plan for, because every outside agent reading the data is another consumer. The clients who end up happiest with <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> are the ones who were told the truth about cost at the start.</p>
+<h2 id="what-id-tell-a-team-starting-a-data-360-program">What I&rsquo;d tell a team starting a Data 360 program</h2>
+<p>Pick one use case with a named business owner and a measurable outcome. Write down what a customer and an account mean before mapping anything. Decide, source by source, whether data is federated or ingested, and record why. Start identity resolution conservative and loosen it only with evidence. Treat consent and access as part of the model, not a later security review. Decide early which surfaces will read the data, whether that&rsquo;s <abbr class="gl" data-tip="Salesforce Agentforce — Salesforce&amp;rsquo;s platform for building and running AI agents." tabindex="0">Agentforce</abbr> inside Salesforce, Claude or Slack through <abbr class="gl" data-tip="AIforce — Salesforce&amp;rsquo;s layer, announced at Dreamforce 2026, that brings Salesforce data, workflows and logic to the surfaces where people and agents work, starting with Claude, Slack and Lightning." tabindex="0">AIforce</abbr>, or your own agents over <abbr class="gl" data-tip="Model Context Protocol — An open standard for connecting AI agents to tools and data sources." tabindex="0">MCP</abbr>, and hold all of them to the same access rules. Estimate consumption up front. And don&rsquo;t let anyone build an agent until the data it grounds on has been harmonized, resolved and governed.</p>
+<p>None of that is new advice in spirit. It&rsquo;s what we&rsquo;ve always said about data warehouses and master data. What has changed is the stakes. When the consumer of the data was a dashboard, a bad join produced a wrong chart. When the consumer is an agent talking to a customer, in Claude or Slack or your own app, it produces a wrong answer, in your company&rsquo;s voice, at scale.</p>
+<p>That&rsquo;s why I sat this exam two weeks after the last one. The architecture is only as good as the data under it, and I wanted to be certain I can build both.</p>
+<h2 id="appendix-glossary">Appendix: glossary</h2>
+<p>The terms used above, spelled out.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Full name</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data 360</strong></td>
+<td>Salesforce Data 360</td>
+<td>Salesforce&rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360.</td>
+</tr>
+<tr>
+<td><strong>AIforce</strong></td>
+<td>AIforce</td>
+<td>Salesforce&rsquo;s layer, announced at Dreamforce 2026, that brings Salesforce data, workflows and logic to the surfaces where people and agents work, starting with Claude, Slack and Lightning.</td>
+</tr>
+<tr>
+<td><strong>Claudeforce</strong></td>
+<td>Claudeforce</td>
+<td>The Salesforce and Anthropic partnership that puts Salesforce inside Claude. In beta for all customers since Dreamforce 2026.</td>
+</tr>
+<tr>
+<td><strong>Slackforce</strong></td>
+<td>Slackforce</td>
+<td>The AIforce surface that brings Salesforce into Slack.</td>
+</tr>
+<tr>
+<td><strong>Agentforce Coworker</strong></td>
+<td>Agentforce Coworker</td>
+<td>The AIforce surface in Lightning, available now.</td>
+</tr>
+<tr>
+<td><strong>Headless Toolkit</strong></td>
+<td>Headless Toolkit (introduced as Headless 360)</td>
+<td>Salesforce&rsquo;s open architecture that exposes every platform capability as an API, MCP tool or CLI command. Introduced at TDX in April 2026.</td>
+</tr>
+<tr>
+<td><strong>Headless Data 360</strong></td>
+<td>Headless Data 360</td>
+<td>Exposes more than 200 Data 360 APIs to AI agents over MCP. Announced August 2026.</td>
+</tr>
+<tr>
+<td><strong>MCP</strong></td>
+<td>Model Context Protocol</td>
+<td>An open standard for connecting AI agents to tools and data sources.</td>
+</tr>
+<tr>
+<td><strong>Agentforce</strong></td>
+<td>Salesforce Agentforce</td>
+<td>Salesforce&rsquo;s platform for building and running AI agents.</td>
+</tr>
+<tr>
+<td><strong>Subagent</strong></td>
+<td>Subagent</td>
+<td>A unit of agent behavior for a specific job in Agentforce. Called a topic until April 2026.</td>
+</tr>
+<tr>
+<td><strong>Atlas Reasoning Engine</strong></td>
+<td>Atlas Reasoning Engine</td>
+<td>The reasoning engine behind Agentforce agents.</td>
+</tr>
+<tr>
+<td><strong>Koa</strong></td>
+<td>Koa</td>
+<td>Salesforce&rsquo;s CRM reasoning model, built on NVIDIA Nemotron. In pilot, with general availability expected in winter 2026.</td>
+</tr>
+<tr>
+<td><strong>Agent Context Engine</strong></td>
+<td>Agent Context Engine (ACE)</td>
+<td>A Data 360 capability that assembles governed, authorized context for agents from structured and unstructured sources. Announced at Dreamforce 2026.</td>
+</tr>
+<tr>
+<td><strong>Trusted Enterprise AI Harness</strong></td>
+<td>Trusted Enterprise AI Harness</td>
+<td>Salesforce&rsquo;s architecture for trusted context, agency, action, governance, security and models across the enterprise, including the AI Control Plane.</td>
+</tr>
+<tr>
+<td><strong>MuleSoft Agent Fabric</strong></td>
+<td>MuleSoft Agent Fabric</td>
+<td>MuleSoft&rsquo;s layer for discovering, governing and orchestrating AI agents across systems.</td>
+</tr>
+<tr>
+<td><strong>Data stream</strong></td>
+<td>Data stream</td>
+<td>A configured feed that brings data from a source into Data 360.</td>
+</tr>
+<tr>
+<td><strong>DLO</strong></td>
+<td>Data Lake Object</td>
+<td>Where ingested data lands, in essentially the shape the source sent it.</td>
+</tr>
+<tr>
+<td><strong>DMO</strong></td>
+<td>Data Model Object</td>
+<td>An object in the common, harmonized data model that raw data is mapped onto.</td>
+</tr>
+<tr>
+<td><strong>Harmonization</strong></td>
+<td>Data harmonization</td>
+<td>Mapping source data onto a shared model so that different systems mean the same thing.</td>
+</tr>
+<tr>
+<td><strong>Identity resolution</strong></td>
+<td>Identity resolution</td>
+<td>The process that decides which records represent the same person or company and merges them into a unified profile.</td>
+</tr>
+<tr>
+<td><strong>Match rules</strong></td>
+<td>Match rules</td>
+<td>The criteria (exact, exact normalized or fuzzy) that decide two records are the same entity.</td>
+</tr>
+<tr>
+<td><strong>Reconciliation rules</strong></td>
+<td>Reconciliation rules</td>
+<td>The logic that decides which value wins when matched records disagree.</td>
+</tr>
+<tr>
+<td><strong>Unified profile</strong></td>
+<td>Unified Individual or Unified Account</td>
+<td>The single, resolved record for a person or a company.</td>
+</tr>
+<tr>
+<td><strong>Calculated insight</strong></td>
+<td>Calculated insight</td>
+<td>A metric computed over unified data, such as lifetime value or a warranty claims rate.</td>
+</tr>
+<tr>
+<td><strong>Streaming insight</strong></td>
+<td>Streaming insight</td>
+<td>A metric computed in near real time on incoming events.</td>
+</tr>
+<tr>
+<td><strong>Data action</strong></td>
+<td>Data action</td>
+<td>An event Data 360 sends when conditions are met, used to trigger flows or external systems.</td>
+</tr>
+<tr>
+<td><strong>Data graph</strong></td>
+<td>Data graph</td>
+<td>A pre-assembled view of related records that agents and applications can read quickly.</td>
+</tr>
+<tr>
+<td><strong>Search index, retriever</strong></td>
+<td>Search index, retriever</td>
+<td>The components that make unstructured content searchable by meaning, so agents can ground their answers in it.</td>
+</tr>
+<tr>
+<td><strong>Zero copy</strong></td>
+<td>Zero-copy data federation</td>
+<td>Working with data where it lives, for example in Snowflake or Databricks, instead of copying it in.</td>
+</tr>
+<tr>
+<td><strong>Data space</strong></td>
+<td>Data space</td>
+<td>A logical partition of Data 360 data, for example by brand or region, with its own access.</td>
+</tr>
+<tr>
+<td><strong>Flex Credits</strong></td>
+<td>Flex Credits</td>
+<td>Salesforce&rsquo;s consumption currency, used for Data 360 since March 2026.</td>
+</tr>
+<tr>
+<td><strong>ERP</strong></td>
+<td>Enterprise Resource Planning</td>
+<td>The back-office system of record, such as SAP or Oracle, for orders, inventory and finance.</td>
+</tr>
+</tbody>
+</table>
+<p><em>If you&rsquo;re planning a <abbr class="gl" data-tip="Salesforce Data 360 — Salesforce&amp;rsquo;s data platform, formerly Data Cloud, renamed at Dreamforce in October 2025 as the data layer of Agentforce 360." tabindex="0">Data 360</abbr> or agent program and want to compare notes, I&rsquo;m easy to reach. See the <a href="/#contact">contact section</a>.</em></p>
+  </article>
+
+  <section class="share">
+    <span>Share this article</span>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://vamshireddi.com/articles/before-the-agent-the-data/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://twitter.com/intent/tweet?url=https://vamshireddi.com/articles/before-the-agent-the-data/&text=Before the Agent, the Data" target="_blank" rel="noopener">X</a>
+    <button type="button" id="copyLink" data-url="https://vamshireddi.com/articles/before-the-agent-the-data/">Copy link</button>
+  </section>
+
+  <section class="related"><h2>Related articles</h2><ul><li><a href="/articles/b2c-solution-architect/">The Customer Is the Architecture</a><span>September 12, 2026 · 9 min</span></li><li><a href="/articles/nine-months-as-a-student-again/">Nine Months as a Student Again</a><span>September 18, 2026 · 4 min</span></li></ul></section>
+  <nav class="prevnext"><a class="older" href="/articles/nine-months-as-a-student-again/"><span>Older</span>Nine Months as a Student Again</a><span></span></nav>
+
+  <aside class="author">
+    <img src="/photo.jpg" alt="Vamshi Krishna Reddy Bandaru">
+    <div><strong>Vamshi Krishna Reddy Bandaru</strong><p>Enterprise AI/ML and Salesforce Architect and founder of Godsreality.org (BibleReal.com, RealApologist.com). Salesforce Certified Systems, Application, and B2C Solution Architect. <a href="/">More about Vamshi →</a> · <a href="https://linkedin.com/in/vamshireddi" rel="noopener" target="_blank">LinkedIn</a></p></div>
+  </aside>
+</main>
+
+<footer class="footer">Built by Vamshi &mdash; 2026 &middot; <a href="/articles/">All writing</a> &middot; <a href="/articles/feed.xml">RSS</a></footer>
+<script>
+// theme toggle — remembers the choice, falls back to the OS preference
+(function(){
+  var btn=document.getElementById('themeToggle'); if(!btn) return;
+  function current(){var a=document.documentElement.getAttribute('data-theme');
+    return a||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');}
+  btn.addEventListener('click',function(){
+    var next=current()==='light'?'dark':'light',r=document.documentElement;
+    r.classList.add('theming');
+    r.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+    btn.setAttribute('aria-label','Switch to '+(next==='light'?'dark':'light')+' theme');
+    setTimeout(function(){r.classList.remove('theming');},340);
+  });
+})();
+// tap-to-show glossary tooltips on touch devices
+document.addEventListener('click',function(e){var a=e.target.closest('abbr.gl');document.querySelectorAll('abbr.gl.open').forEach(function(x){if(x!==a)x.classList.remove('open')});if(a){e.preventDefault();a.classList.toggle('open');}});
+document.getElementById('copyLink')?.addEventListener('click',function(){
+  var b=this,u=b.dataset.url||location.href;
+  (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy link'},1800)}).catch(function(){prompt('Copy this link',u)});
+});
+</script>
+</body>
+</html>
