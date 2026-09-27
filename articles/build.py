@@ -31,6 +31,18 @@ SITE = ROOT.parent                              # repo root
 SRC = ROOT / "src"
 ART_TEMPLATE = (ROOT / "template.html").read_text(encoding="utf-8")
 LIST_TEMPLATE = (ROOT / "list-template.html").read_text(encoding="utf-8")
+
+import hashlib
+def bust(h):
+    """Append ?v=<content hash> to local CSS and image URLs so browsers and the CDN pick up changes immediately."""
+    def ver(url):
+        p = SITE / url.lstrip("/").split("?")[0]
+        if not p.is_file():
+            return url
+        return url.split("?")[0] + "?v=" + hashlib.sha1(p.read_bytes()).hexdigest()[:8]
+    return re.sub(r'((?:href|src)=")(/articles/(?:articles\.css|images/[^"?]+)(?:\?v=[0-9a-f]+)?)(")',
+                  lambda m: m.group(1) + ver(m.group(2)) + m.group(3), h)
+
 SITE_URL = "https://vamshireddi.com"
 SITE_NAME = "Vamshi Bandaru"
 AUTHOR = "Vamshi Krishna Reddy Bandaru"
@@ -245,7 +257,7 @@ def build():
         )
         out = ROOT / a["slug"] / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(page, encoding="utf-8")
+        out.write_text(bust(page), encoding="utf-8")
         print("built", out.relative_to(SITE))
 
     # listing grouped by year
@@ -266,7 +278,7 @@ def build():
         url=f"{SITE_URL}/articles/", og_image=DEFAULT_OG, count=len(arts), groups=groups, tag_filters=tag_filters,
         jsonld=json.dumps({"@context": "https://schema.org", "@type": "Blog", "name": f"{SITE_NAME} — Writing",
                            "url": f"{SITE_URL}/articles/", "author": {"@type": "Person", "name": AUTHOR}}))
-    (ROOT / "index.html").write_text(listing, encoding="utf-8")
+    (ROOT / "index.html").write_text(bust(listing), encoding="utf-8")
     print("built articles/index.html")
 
     # search index
